@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('type');
             $table->string('image');
+            $table->string('slug');
             $table->foreignId('restaurant_id');
             $table->timestamps();
         });

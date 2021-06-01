@@ -18,6 +18,7 @@ class CreateComponentsTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->float('weight');
+            $table->string('slug');
             $table->foreignId('meal_id');
             $table->timestamps();
         });

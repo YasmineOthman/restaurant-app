@@ -19,6 +19,7 @@ class CreateMealsTable extends Migration
             $table->string('image');
             $table->float('price');
             $table->float('calory');
+            $table->string('slug');
             $table->foreignId('category_id');
             $table->timestamps();
         });

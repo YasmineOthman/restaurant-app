@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->text('notes');
             $table->string('place');
+            $table->string('slug');
             $table->foreignId('user_id');
             $table->foreignId('restaurant_id');
             $table->timestamps();
