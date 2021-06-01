@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
+    public function meals()
+    {
+        return $this->hasMany(Meal::class);
+    }
 }
