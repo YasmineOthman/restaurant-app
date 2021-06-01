@@ -15,6 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->text('notes');
+            $table->string('place');
+            $table->foreignId('user_id');
+            $table->foreignId('restaurant_id');
             $table->timestamps();
         });
     }

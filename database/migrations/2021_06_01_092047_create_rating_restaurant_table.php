@@ -15,6 +15,8 @@ class CreateRatingRestaurantTable extends Migration
     {
         Schema::create('rating_restaurant', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('rating_id');
+            $table->foreignId('restaurant_id');
             $table->timestamps();
         });
     }

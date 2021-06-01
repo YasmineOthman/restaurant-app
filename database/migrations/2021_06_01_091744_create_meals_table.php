@@ -15,6 +15,11 @@ class CreateMealsTable extends Migration
     {
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('image');
+            $table->float('price');
+            $table->float('calory');
+            $table->foreignId('category_id');
             $table->timestamps();
         });
     }

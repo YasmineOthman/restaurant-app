@@ -15,6 +15,9 @@ class CreateMealOrderTable extends Migration
     {
         Schema::create('meal_order', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('meal_id');
+            $table->foreignId('order_id');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
