@@ -12,5 +12,8 @@ class Component extends Model
     {
      return $this->belongsTo(Meal::class);
     }
-
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
