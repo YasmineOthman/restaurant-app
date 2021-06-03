@@ -1,0 +1,42 @@
+html,body{
+    height: 100%;
+   width:100%;
+   font-family: serif;
+   margin:0;
+   padding:0;
+}
+.navbar a:hover{
+   background-color: black;
+}
+.btn-primary,.btn-primary:hover{
+   background-color: black;
+   color:#eb640a ;
+}
+.btn-primary:hover{
+   border-radius: 50%;
+}
+.btn-success:hover{
+   border-radius: 50%;
+}
+.btn-success,.btn-success:hover{
+   background-color: #eb640a;
+   color:black ;
+}
+.navbar-nav a{
+   padding-right: 20px;
+}
+.nav-link{
+   font-size: 1.1em !important;
+}
+footer{
+   background-color: black;
+   color:  #eb640a;
+   text-align: center;
+   height: 5%;
+    display: block;
+    width: 100%;
+    border-top: 1px solid  #eb640a ;
+    position: fixed;
+    bottom:0;
+
+}
