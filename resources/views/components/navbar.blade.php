@@ -20,26 +20,30 @@
               Account
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              @guest
               <li><a class="dropdown-item" href="#"style="color: #eb640a">Log in</a></li>
               <li><a class="dropdown-item" href="#" style="color: #eb640a">Sign in</a></li>
               <li><hr class="dropdown-divider"></li>
-              @endguest
-              @auth
-
               <li><form action="#" method="post">
                 @csrf
                 <input type="submit" class="button is-light" value="Logout">
               </form></li>
-              @endauth
             </ul>
           </li>
-
         </ul>
         <form class="d-flex">
           <input id="search"class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="border-color:#eb640a">
           <button class="btn btn-success" type="submit">Search</button>
         </form>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #eb640a">
+              Language
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#"style="color: #eb640a">Arabic</a></li>
+                <li><a class="dropdown-item" href="#" style="color: #eb640a">English</a></li>
+
+            </ul>
+        </li>
       </div>
     </div>
   </nav>
