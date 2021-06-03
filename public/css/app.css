@@ -4,6 +4,11 @@ html,body{
    font-family: serif;
    margin:0;
    padding:0;
+   background-color: black;
+}
+.carousel{
+width:100%;
+/* margin-bottom: 20px; */
 }
 .navbar a:hover{
    background-color: black;
