@@ -10,7 +10,7 @@
             <a class="nav-link active" aria-current="page" href="/" style="color: #eb640a">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#" style="color: #eb640a">Restaurants</a>
+            <a class="nav-link active" href="{{route('restaurants.index')}}" style="color: #eb640a">Restaurants</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="#" style="color: #eb640a">Contact us</a>
