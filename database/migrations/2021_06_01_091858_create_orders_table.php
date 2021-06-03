@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('slug');
             $table->foreignId('user_id');
             $table->foreignId('restaurant_id');
+            $table->foreignId('discount_id');
             $table->timestamps();
         });
     }

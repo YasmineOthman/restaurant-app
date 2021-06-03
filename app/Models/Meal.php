@@ -10,7 +10,7 @@ class Meal extends Model
     use HasFactory;
     public function components()
     {
-        return $this->hasMany(Component::class);
+        return $this->belongsToMany(Component::class);
     }
     public function category ()
     {

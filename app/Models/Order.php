@@ -16,6 +16,10 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function discount()
+    {
+        return $this->belongsTo(Discount::class);
+    }
     public function getRouteKeyName()
     {
         return 'slug';
