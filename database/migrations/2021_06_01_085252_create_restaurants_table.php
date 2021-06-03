@@ -17,6 +17,7 @@ class CreateRestaurantsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
+            $table->text('description');
             $table->string('image');
             $table->string('slug');
             $table->timestamps();
