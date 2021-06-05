@@ -2,46 +2,14 @@
 <section class="section">
 <div class="container">
     <div class="title is-2 form">Create Category</div>
-    <form action="{{ route('categoriess.store') }} " method="POST">
+    <form action="{{ route('categories.store') }} " method="POST">
      @csrf
      <div class="field">
         <label class="label form"> Category Name</label>
         <div class="control">
-          <input class="input @error('type')is-danger @enderror is-normal" name="name" type="text" value="{{ old('name') }}" placeholder="Enter Restaurant Name">
+          <input class="input @error('type')is-danger @enderror is-normal" name="type" type="text" value="{{ old('type') }}" placeholder="Enter Category Type">
         </div>
         @error('type')
-          <p class="help is-danger">{{ $message }}</p>
-        @enderror
-      </div>
-      <div class="field">
-        <label class="label form">City</label>
-        <div class="control">
-          <input class="input @error('city')is-danger @enderror is-normal" name="city" type="text" value="{{ old('city') }}" placeholder="Enter your city">
-        </div>
-        @error('address')
-          <p class="help is-danger">{{ $message }}</p>
-        @enderror
-      </div>
-      <div class="field">
-        <label class="label form">Location</label>
-        <div class="control">
-          <input class="input @error('address')is-danger @enderror is-normal" name="address" type="text" value="{{ old('address') }}" placeholder="Enter Restaurant location">
-        </div>
-        @error('address')
-          <p class="help is-danger">{{ $message }}</p>
-        @enderror
-      </div>
-
-      <div class="field">
-        <label class="label form">Description</label>
-        <div class="control">
-          <textarea class="ckeditor textarea @error('description')is-danger @enderror is-small" name="description" placeholder="descripe your restaurant..">{{ old('description') }}</textarea>
-          <script type="text/javascript">
-            CKEDITOR.replace( 'content' );
-          </script>
-          <input type="hidden" name="content" id="content">
-        </div>
-        @error('description')
           <p class="help is-danger">{{ $message }}</p>
         @enderror
       </div>
@@ -55,7 +23,7 @@
                 <i class="fas fa-upload"></i>
               </span>
               <span class="file-label">
-                Choose an image for restaurant
+                Choose an image for category
               </span>
             </span>
           </label>

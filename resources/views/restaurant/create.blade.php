@@ -13,7 +13,7 @@
 <div class="container">
     <div class="title is-2 form">Create Your Restaurant</div>
 
-    <form action=" {{route('restaurants.create')}}" method="POST">
+    <form action=" {{route('restaurants.store')}}" method="POST">
       @csrf
         <div class="field">
 
