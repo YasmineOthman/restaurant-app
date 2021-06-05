@@ -12,7 +12,7 @@
 <section class="section">
 <div class="container">
     <div class="title is-2 form">Create Your Restaurant</div>
-    <form action=" " method="POST">
+    <form action="{{ route('restaurants.store') }} " method="POST">
      @csrf
      <div class="field">
         <label class="label form"> Restaurant Name</label>
@@ -20,6 +20,15 @@
           <input class="input @error('name')is-danger @enderror is-normal" name="name" type="text" value="{{ old('name') }}" placeholder="Enter Restaurant Name">
         </div>
         @error('name')
+          <p class="help is-danger">{{ $message }}</p>
+        @enderror
+      </div>
+      <div class="field">
+        <label class="label form">City</label>
+        <div class="control">
+          <input class="input @error('city')is-danger @enderror is-normal" name="city" type="text" value="{{ old('city') }}" placeholder="Enter your city">
+        </div>
+        @error('address')
           <p class="help is-danger">{{ $message }}</p>
         @enderror
       </div>
@@ -32,6 +41,7 @@
           <p class="help is-danger">{{ $message }}</p>
         @enderror
       </div>
+
       <div class="field">
         <label class="label form">Description</label>
         <div class="control">

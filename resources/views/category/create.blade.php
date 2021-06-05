@@ -1,31 +1,22 @@
 <x-layouts.app>
-    <x-slot name="scripts">
-        <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
-        <script type="text/javascript">
-           $(document).ready(function () {
-           $('.ckeditor').ckeditor();
-          });
-</script>
-      </x-slot>
 <section class="section">
 <div class="container">
-    <div class="title is-2 form">Edit {{ $restaurant->name }} information</div>
-    <form action="{{ route('restaurants.update') }}" method="POST" class="form" >
+    <div class="title is-2 form">Create Category</div>
+    <form action="{{ route('categoriess.store') }} " method="POST">
      @csrf
-     <input type="hidden" name="_method" value="PUT">
      <div class="field">
-        <label class="label form"> Restaurant Name</label>
+        <label class="label form"> Category Name</label>
         <div class="control">
-          <input class="input @error('name')is-danger @enderror is-normal" name="name" type="text" value="{{ old('name', $restaurant->name) }}" placeholder="Enter Restaurant Name">
+          <input class="input @error('type')is-danger @enderror is-normal" name="name" type="text" value="{{ old('name') }}" placeholder="Enter Restaurant Name">
         </div>
-        @error('name')
+        @error('type')
           <p class="help is-danger">{{ $message }}</p>
         @enderror
       </div>
       <div class="field">
         <label class="label form">City</label>
         <div class="control">
-          <input class="input @error('city')is-danger @enderror is-normal" name="city" type="text" value="{{ old('city',$restaurant->city) }}" placeholder="Enter your city">
+          <input class="input @error('city')is-danger @enderror is-normal" name="city" type="text" value="{{ old('city') }}" placeholder="Enter your city">
         </div>
         @error('address')
           <p class="help is-danger">{{ $message }}</p>
@@ -34,7 +25,7 @@
       <div class="field">
         <label class="label form">Location</label>
         <div class="control">
-          <input class="input @error('address')is-danger @enderror is-normal" name="address" type="text" value="{{ old('address',$restaurant->address) }}" placeholder="Enter Restaurant location">
+          <input class="input @error('address')is-danger @enderror is-normal" name="address" type="text" value="{{ old('address') }}" placeholder="Enter Restaurant location">
         </div>
         @error('address')
           <p class="help is-danger">{{ $message }}</p>
@@ -44,7 +35,7 @@
       <div class="field">
         <label class="label form">Description</label>
         <div class="control">
-          <textarea class="ckeditor textarea @error('description')is-danger @enderror is-small" name="description" placeholder="descripe your restaurant..">{{ old('description', $restaurant->description)) }}</textarea>
+          <textarea class="ckeditor textarea @error('description')is-danger @enderror is-small" name="description" placeholder="descripe your restaurant..">{{ old('description') }}</textarea>
           <script type="text/javascript">
             CKEDITOR.replace( 'content' );
           </script>
