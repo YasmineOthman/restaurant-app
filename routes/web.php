@@ -18,6 +18,8 @@ use App\Http\Controllers\RestaurantController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::resource('restaurants', RestaurantController::class);
+Route::resource('categories', CategoryController::class);
+Route::resource('meals', MealController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
