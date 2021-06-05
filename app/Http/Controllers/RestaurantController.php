@@ -15,7 +15,7 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurants = Restaurant::all();
-       return view('restaurant.index', ['restaurants' => $restaurants]);
+        return view('restaurant.index', ['restaurants' => $restaurants]);
     }
 
     /**
@@ -36,7 +36,9 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'     =>   'requierd|min:5|max:255'
+        ]);
     }
 
     /**
