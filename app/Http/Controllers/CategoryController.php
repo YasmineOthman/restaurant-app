@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('category.index', ['categories' => $categories]);
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
@@ -35,7 +37,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+
+            'type'                     => 'required|min:4|max:255'
+            // 'image'    => 'file|image',
+        ]);
+        $category = new Category();
+        $category->type = $request->type;
+        $category->image = $request->image;
+        $category->slug = Str::slug($request->type, '-');
+        $category->save();
+        return redirect()->route('categories.show', $category);
     }
 
     /**
@@ -46,7 +58,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('category.show', ['category' => $category]);
     }
 
     /**
@@ -57,7 +69,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit');
     }
 
     /**
@@ -69,7 +81,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+
+        $request->validate([
+
+            'type'                     => 'required|min:4|max:255'
+            // 'image'    => 'file|image',
+        ]);
+        $category->type = $request->type;
+        $category->image = $request->image;
+        $category->slug = Str::slug($request->type, '-');
+        $category->save();
+        return redirect()->route('categories.show', $category);
     }
 
     /**
