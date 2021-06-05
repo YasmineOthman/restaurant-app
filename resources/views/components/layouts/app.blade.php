@@ -28,7 +28,7 @@
   <script>
 
     $('.js-go-night').click(function(){
-      alert('Go to night mode - replace me with the CSS changing code!');
+      // alert('Go to night mode - replace me with the CSS changing code!');
       $('body').addClass('night');
       $('div').addClass('night');
       $('li').addClass('night');
@@ -39,7 +39,7 @@
 
     });
     $('.js-go-day').click(function(){
-      alert('Go to day mode - replace me with the CSS changing code!');
+      // alert('Go to day mode - replace me with the CSS changing code!');
       $('body').removeClass('night');
       $('div').removeClass('night');
       $('li').removeClass('night');
