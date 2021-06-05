@@ -2,7 +2,9 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MealController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RestaurantController;
 
 /*
