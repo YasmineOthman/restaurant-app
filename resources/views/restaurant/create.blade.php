@@ -4,17 +4,19 @@
         {{-- <script type="text/javascript" src={{ asset('js/ckeditor.js') }}></script> --}}
         <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
         <script type="text/javascript">
-           $(document).ready(function () {
-           $('.ckeditor').ckeditor();
+          $(document).ready(function () {
+          $('.ckeditor').ckeditor();
           });
 </script>
-      </x-slot>
+    </x-slot>
 <section class="section">
 <div class="container">
     <div class="title is-2 form">Create Your Restaurant</div>
-    <form action="{{ route('restaurants.store') }} " method="POST">
-     @csrf
-     <div class="field">
+
+    <form action=" {{route('restaurants.create')}}" method="POST">
+      @csrf
+        <div class="field">
+
         <label class="label form"> Restaurant Name</label>
         <div class="control">
           <input class="input @error('name')is-danger @enderror is-normal" name="name" type="text" value="{{ old('name') }}" placeholder="Enter Restaurant Name">
