@@ -14,7 +14,8 @@ class MealController extends Controller
      */
     public function index()
     {
-        //
+        $meals = Meal::all();
+        return view('meal.index', ['meals' => $meals]);
     }
 
     /**
@@ -24,7 +25,7 @@ class MealController extends Controller
      */
     public function create()
     {
-        //
+        return view('meal.create');
     }
 
     /**
@@ -35,7 +36,20 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'                     => 'required|min:4|max:255',
+            'price'                     => 'required|numeric',
+            'calory'                     => 'required|numeric'
+            // 'image'    => 'file|image',
+        ]);
+        $meal = new Meal();
+        $meal->name = $request->name;
+        $meal->price = $request->price;
+        $meal->calory = $request->calory;
+        $meal->image = $request->image;
+        $meal->slug = Str::slug($request->name, '-');
+        $meal->save();
+        return redirect()->route('meals.show', $meal);
     }
 
     /**
@@ -46,7 +60,7 @@ class MealController extends Controller
      */
     public function show(Meal $meal)
     {
-        //
+        return view('meal.show',['meal' => $meal]);
     }
 
     /**
@@ -57,7 +71,7 @@ class MealController extends Controller
      */
     public function edit(Meal $meal)
     {
-        //
+        return view('meal.edit');
     }
 
     /**
@@ -69,7 +83,20 @@ class MealController extends Controller
      */
     public function update(Request $request, Meal $meal)
     {
-        //
+        $request->validate([
+            'name'                     => 'required|min:4|max:255',
+            'price'                     => 'required|numeric',
+            'calory'                     => 'required|numeric'
+            // 'image'    => 'file|image',
+        ]);
+
+        $meal->name = $request->name;
+        $meal->price = $request->price;
+        $meal->calory = $request->calory;
+        $meal->image = $request->image;
+        $meal->slug = Str::slug($request->name, '-');
+        $meal->save();
+        return redirect()->route('meals.show', $meal);
     }
 
     /**
@@ -83,3 +110,9 @@ class MealController extends Controller
         //
     }
 }
+
+
+
+
+
+
