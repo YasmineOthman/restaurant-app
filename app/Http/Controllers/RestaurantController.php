@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
 {
@@ -36,7 +37,23 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'                     => 'required|min:4|max:255',
+            'city'                     => 'required|min:4',
+            'address'                  => 'required|min:4',
+            'description'              => 'required|min:4'
+            // 'image'    => 'file|image',
+        ]);
+        $restaurant = new Restaurant();
+        $restaurant->name = $request->name;
+        $restaurant->image = $request->image;
+        $restaurant->city = $request->city;
+        $restaurant->address = $request->address;
+        $restaurant->description= $request->description;
+        $restaurant->slug = Str::slug($request->name, '-');
+        $restaurant->save();
+        return redirect()->route('restaurants.show', $restaurant);
+
     }
 
     /**
@@ -47,7 +64,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('restaurant.show', ['restaurant' => $restaurant]);
     }
 
     /**
@@ -58,8 +75,10 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+
+        return view('restaurant.edit');
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -70,7 +89,23 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        $request->validate([
+            'name'                     => 'required|min:4|max:255',
+            'city'                     => 'required|min:4',
+            'address'                  => 'required|min:4',
+            'description'              => 'required|min:4',
+            'image'    => 'required|file|image',
+        ]);
+
+        $restaurant->name = $request->name;
+        $restaurant->image = $request->image;
+        $restaurant->city = $request->city;
+        $restaurant->address = $request->address;
+        $restaurant->description= $request->description;
+        $restaurant->slug = Str::slug($request->name, '-');
+        $restaurant->save();
+        return redirect()->route('restaurants.show', $restaurant);
+
     }
 
     /**
