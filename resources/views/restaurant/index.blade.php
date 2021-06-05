@@ -6,7 +6,7 @@
             <div class="column is-4">
               <a href="{{ route('restaurants.show', $restaurant) }}" style="text-decoration: none;">
                 <div class="card" style="height: 100%;" id="postcard">
-                  <div class="card-image" id="postimage">
+                  <div class="card-image">
                     <figure class="image is-4by3" >
                       <img src="{{ $restaurant-> image }}" alt="Placeholder image" >
                     </figure>
@@ -20,7 +20,7 @@
                     </div>
                     <div class="content">
                       <span style="color: black">{{$restaurant->address}}</span>
-                      <a href="{{ route('restaurants.show', $post->id) }}" style="color: blue;text-decoration: none;">show</a>
+                      <a href="{{ route('restaurants.show', $restaurant->id) }}" style="color: blue;text-decoration: none;">show</a>
                       <br>
                       <time datetime="2016-1-1">{{ $restaurant->created_at }}</time>
                     </div>

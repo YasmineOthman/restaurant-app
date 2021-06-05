@@ -1,7 +1,5 @@
 <x-layouts.app>
     <x-slot name="scripts">
-
-        {{-- <script type="text/javascript" src={{ asset('js/ckeditor.js') }}></script> --}}
         <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
         <script type="text/javascript">
           $(document).ready(function () {
@@ -86,7 +84,5 @@
       </div>
     </form>
 </div>
-
-
 </section>
 </x-layouts.app>

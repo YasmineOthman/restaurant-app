@@ -24,5 +24,30 @@
       cluster: 'mt1'
     });
   </script>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script>
+
+    $('.js-go-night').click(function(){
+      alert('Go to night mode - replace me with the CSS changing code!');
+      $('body').addClass('night');
+      $('div').addClass('night');
+      $('li').addClass('night');
+      $('form').addClass('night');
+      $('label').addClass('night');
+      $('button').addClass('night');
+      $('section').addClass('night');
+
+    });
+    $('.js-go-day').click(function(){
+      alert('Go to day mode - replace me with the CSS changing code!');
+      $('body').removeClass('night');
+      $('div').removeClass('night');
+      $('li').removeClass('night');
+      $('form').removeClass('night');
+      $('label').removeClass('night');
+      $('button').removeClass('night');
+      $('section').removeClass('night');
+    });
+    </script>
   </body>
 </html>
