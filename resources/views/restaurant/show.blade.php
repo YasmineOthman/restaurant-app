@@ -15,8 +15,8 @@
               <li><a href="{{ route('restaurants.edit', $restaurant) }}"style="text-decoration:none; color:#eb640a;"><b>Edit</b></a></li>
               {{-- <li><a href="{{ route('restaurants.delete', $restaurant->id) }}" style="text-decoration:none; color:#eb640a;"><b>Delete</b></a></li> --}}
               <li><a href="{{ route('restaurants.create') }}"style="text-decoration:none; color:#eb640a;"><b>Create New Restaurant</b></a></li>
-              {{-- <li><a href="{{ route('categories.create' )}}"style="text-decoration:none; color:#eb640a;">
-              <b>Create Category</b></a></li> --}}
+              <li><a href="{{ route('categories.create' )}}"style="text-decoration:none; color:#eb640a;">
+              <b>Create Category</b></a></li>
             </ul>
           </div>
         </nav>
