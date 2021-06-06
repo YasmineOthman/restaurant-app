@@ -22,6 +22,17 @@
       </nav>
     </div>
   </section>
-
+  <section class="section">
+    <div class="container">
+      <p class="content">
+        <h3>Related Meals</h3>
+        <ul>
+          @foreach ($component->meals as $meal)
+            <li><a href="{{route('meals.show',$meal)}}" style="text-decoration:none; color:black"><b>{{ $meal->name }}</b></a></li>
+          @endforeach
+        </ol>
+      </p>
+    </div>
+  </section>
 
   </x-layouts>
