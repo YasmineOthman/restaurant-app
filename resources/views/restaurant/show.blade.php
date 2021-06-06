@@ -37,7 +37,7 @@
     <section class="section">
       <div class="container">
         <p class="content">
-          <h3>Related Categories</h3>
+          <h3>Categories</h3>
           <ul>
             @foreach ($restaurant->categories as $category)
               <li><a href="{{route('categories.show',$category)}}" style="text-decoration:none; color:black"><b>{{ $category->type }}</b></a></li>
