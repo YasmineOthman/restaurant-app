@@ -13,6 +13,22 @@
           <p class="help is-danger">{{ $message }}</p>
         @enderror
       </div>
+
+      <div class="field">
+        <label class="label">Restaurant</label>
+        <div class="control" id="restaurant">
+          <div class="select @error('restaurant_id')is-danger @enderror">
+            <select name="restaurant_id" value="{{ old('restaurant_id') }}">
+              @foreach ($restaurants as $restaurant)
+                <option value="{{ $restaurant->id }}">{{ $restaurant->name }}</option>
+              @endforeach
+            </select>
+          </div>
+        </div>
+        @error('restaurant_id')
+          <p class="help is-danger">{{ $message }}</p>
+        @enderror
+      </div>
       <div class="field">
         <label class="label form"> Image</label>
         <div class="file">

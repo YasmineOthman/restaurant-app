@@ -15,7 +15,8 @@
               <li><a href="{{ route('restaurants.edit', $restaurant) }}"style="text-decoration:none; color:#eb640a;"><b>Edit</b></a></li>
               {{-- <li><a href="{{ route('restaurants.delete', $restaurant->id) }}" style="text-decoration:none; color:#eb640a;"><b>Delete</b></a></li> --}}
               <li><a href="{{ route('restaurants.create') }}"style="text-decoration:none; color:#eb640a;"><b>Create New Restaurant</b></a></li>
-              {{-- <li><a href="{{ route('categories.show', $post->category) }}"style="text-decoration:none; color:#eb640a;"><b>Show related Posts</b></a></li> --}}
+              {{-- <li><a href="{{ route('categories.create' )}}"style="text-decoration:none; color:#eb640a;">
+              <b>Create Category</b></a></li> --}}
             </ul>
           </div>
         </nav>
@@ -31,6 +32,18 @@
         </div>
         </div>
         </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <p class="content">
+          <h3>Related Categories</h3>
+          <ul>
+            @foreach ($restaurant->categories as $category)
+              <li><a href="{{route('categories.show',$category)}}" style="text-decoration:none; color:black"><b>{{ $category->type }}</b></a></li>
+            @endforeach
+          </ul>
+        </p>
       </div>
     </section>
 

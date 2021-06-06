@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Restaurant;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        $restaurants = Restaurant::all();
+        return view('category.create',['restaurants' => $restaurants]);
     }
 
     /**
@@ -38,11 +40,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'type'                     => 'required|min:4|max:255'
+            'type'                     => 'required|min:4|max:255',
+            'restaurant_id'            => 'required|numeric|exists:restaurants,id',
             // 'image'    => 'file|image',
         ]);
         $category = new Category();
         $category->type = $request->type;
+        $category->restaurant_id = $request->restaurant_id;
         $category->image = $request->image;
         $category->slug = Str::slug($request->type, '-');
         $category->save();
