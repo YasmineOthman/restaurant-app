@@ -23,6 +23,11 @@
     var pusher = new Pusher('d3dc19b1d57129ecf0f0', {
       cluster: 'mt1'
     });
+
+      var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+    });
   </script>
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script>
