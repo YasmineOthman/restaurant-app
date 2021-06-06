@@ -15,11 +15,24 @@
             {{-- <li><a href="{{ route('restaurants.delete', $restaurant->id) }}" style="text-decoration:none; color:#eb640a;"><b>Delete</b></a></li> --}}
             <li><a href="{{ route('categories.create') }}"style="text-decoration:none; color:#eb640a;"><b>Create New Category</b></a></li>
             {{-- <li><a href="{{ route('categories.show', $post->category) }}"style="text-decoration:none; color:#eb640a;"><b>Show related Posts</b></a></li> --}}
+            <li><a href="{{ route('meals.create' )}}"style="text-decoration:none; color:#eb640a;">
+              <b>Create Meal</b></a></li>
           </ul>
         </div>
       </nav>
     </div>
   </section>
-
+  <section class="section">
+    <div class="container">
+      <p class="content">
+        <h3>Meals</h3>
+        <ul>
+          @foreach ($category->meals as $meal)
+            <li><a href="{{route('meals.show',$meal)}}" style="text-decoration:none; color:black"><b>{{ $meal->name }}</b></a></li>
+          @endforeach
+        </ul>
+      </p>
+    </div>
+  </section>
 
   </x-layouts>
