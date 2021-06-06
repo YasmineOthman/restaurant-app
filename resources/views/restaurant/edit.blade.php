@@ -75,7 +75,7 @@
       </div>
       <div class="field is-grouped">
         <div class="control">
-          <button class=" is-link form-button">Create</button>
+          <button class=" is-link form-button">Update</button>
         </div>
         <div class="control">
           <button class=" is-link is-light form-button">Cancel</button>

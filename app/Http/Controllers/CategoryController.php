@@ -72,7 +72,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('category.edit');
+        $restaurants = Restaurant::all();
+        return view('category.edit',['category' => $category,'restaurants' => $restaurants]);
     }
 
     /**
@@ -86,11 +87,13 @@ class CategoryController extends Controller
     {
 
         $request->validate([
-
-            'type'                     => 'required|min:4|max:255'
+            'type'                     => 'required|min:4|max:255',
+            'restaurant_id'            => 'required|numeric|exists:restaurants,id',
             // 'image'    => 'file|image',
         ]);
+
         $category->type = $request->type;
+        $category->restaurant_id = $request->restaurant_id;
         $category->image = $request->image;
         $category->slug = Str::slug($request->type, '-');
         $category->save();

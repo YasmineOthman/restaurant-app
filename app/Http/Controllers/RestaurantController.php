@@ -95,8 +95,8 @@ class RestaurantController extends Controller
             'name'                     => 'required|min:4|max:255',
             'city'                     => 'required|min:4',
             'address'                  => 'required|min:4',
-            'description'              => 'required|min:4',
-            'image'    => 'required|file|image',
+            'description'              => 'required|min:4'
+            // 'image'                    => 'required|file|image',
         ]);
 
         $restaurant->name = $request->name;

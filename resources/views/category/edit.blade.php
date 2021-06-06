@@ -1,8 +1,8 @@
 <x-layouts.app>
   <section class="section">
   <div class="container">
-      <div class="title is-2 form">Edit {{ $category->type }} information<</div>
-      <form action="{{ route('categoriess.update') }}" method="POST" class="form" >
+      <div class="title is-2 form">Edit {{ $category->type }} information</div>
+      <form action="{{ route('categories.update',$category) }}" method="POST" class="form" >
         @csrf
         <input type="hidden" name="_method" value="PUT">
        <div class="field">
@@ -11,6 +11,21 @@
             <input class="input @error('type')is-danger @enderror is-normal" name="type" type="text" value="{{ old('type',$category->type )}}" placeholder="Enter Category Type">
           </div>
           @error('type')
+            <p class="help is-danger">{{ $message }}</p>
+          @enderror
+        </div>
+        <div class="field">
+          <label class="label">Restaurant</label>
+          <div class="control" id="restaurant">
+            <div class="select @error('restaurant_id')is-danger @enderror">
+              <select name="restaurant_id" value="{{ old('restaurant_id') }}">
+                @foreach ($restaurants as $restaurant)
+                  <option value="{{ $restaurant->id }}">{{ $restaurant->name }}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+          @error('restaurant_id')
             <p class="help is-danger">{{ $message }}</p>
           @enderror
         </div>
