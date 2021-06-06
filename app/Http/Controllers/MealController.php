@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Meal;
 use App\Models\Category;
+use App\Models\Component;
 use Illuminate\Http\Request;
 
 class MealController extends Controller
@@ -27,7 +28,8 @@ class MealController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('meal.create',['categories'=> $categories]);
+        $components = Component::all();
+        return view('meal.create',['categories'=> $categories,'components'=>$components]);
     }
 
     /**
@@ -43,6 +45,7 @@ class MealController extends Controller
             'price'                     => 'required|numeric',
             'calory'                     => 'required|numeric',
             'category_id'            => 'required|numeric|exists:categories,id',
+            'components'                      => 'array',
             // 'image'    => 'file|image',
         ]);
         $meal = new Meal();
@@ -53,6 +56,7 @@ class MealController extends Controller
         $meal->category_id = $request->category_id;
         $meal->slug = Str::slug($request->name, '-');
         $meal->save();
+        $meal->components()->sync($request->components);
         return redirect()->route('meals.show', $meal);
     }
 

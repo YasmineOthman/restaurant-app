@@ -47,6 +47,21 @@
           @enderror
         </div>
         <div class="field">
+          <label class="label">Components</label>
+          <div class="control" id="component">
+            <div class="select is-multiple @error('components')is-danger @enderror">
+              <select name="components[]"  multiple>
+                @foreach ($components as $component)
+                  <option value="{{ $component->id }}">{{ $component->name }}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+          @error('components')
+            <p class="help is-danger">{{ $message }}</p>
+          @enderror
+        </div>
+        <div class="field">
           <label class="label form"> Image</label>
           <div class="file">
             <label class="file-label">
