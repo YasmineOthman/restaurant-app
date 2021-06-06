@@ -78,7 +78,7 @@ class RestaurantController extends Controller
     public function edit(Restaurant $restaurant)
     {
 
-        return view('restaurant.edit');
+        return view('restaurant.edit',['restaurant' => $restaurant]);
     }
 
 

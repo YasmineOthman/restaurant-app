@@ -10,7 +10,7 @@
 <section class="section">
 <div class="container">
     <div class="title is-2 form">Edit {{ $restaurant->name }} information</div>
-    <form action="{{ route('restaurants.update') }}" method="POST" class="form" >
+    <form action="{{ route('restaurants.update',$restaurant) }}" method="POST" class="form" >
      @csrf
      <input type="hidden" name="_method" value="PUT">
      <div class="field">
@@ -44,7 +44,7 @@
       <div class="field">
         <label class="label form">Description</label>
         <div class="control">
-          <textarea class="ckeditor textarea @error('description')is-danger @enderror is-small" name="description" placeholder="descripe your restaurant..">{{ old('description', $restaurant->description)) }}</textarea>
+          <textarea class="ckeditor textarea @error('description')is-danger @enderror is-small" name="description" placeholder="descripe your restaurant..">{{ old('description', $restaurant->description) }}</textarea>
           <script type="text/javascript">
             CKEDITOR.replace( 'content' );
           </script>

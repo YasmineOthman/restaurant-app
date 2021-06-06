@@ -32,7 +32,7 @@
           @enderror
         </div>
         <div class="field">
-          <label class="label">Category</label>
+          <label class="label form">Category</label>
           <div class="control" id="category">
             <div class="select @error('category_id')is-danger @enderror">
               <select name="category_id" value="{{ old('category_id') }}">
@@ -47,7 +47,7 @@
           @enderror
         </div>
         <div class="field">
-          <label class="label">Components</label>
+          <label class="label form">Components</label>
           <div class="control" id="component">
             <div class="select is-multiple @error('components')is-danger @enderror">
               <select name="components[]"  multiple>
