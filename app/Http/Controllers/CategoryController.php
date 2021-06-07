@@ -42,12 +42,15 @@ class CategoryController extends Controller
         $request->validate([
             'type'                     => 'required|min:4|max:255',
             'restaurant_id'            => 'required|numeric|exists:restaurants,id',
-            // 'image'    => 'file|image',
+            'image'                    => 'required|file|image'
         ]);
         $category = new Category();
         $category->type = $request->type;
         $category->restaurant_id = $request->restaurant_id;
         $category->image = $request->image;
+        $image = $request->image;
+        $path = $image->store('category-images', 'public');
+        $category->image = $path;
         $category->slug = Str::slug($request->type, '-');
         $category->save();
         return redirect()->route('categories.show', $category);
@@ -89,12 +92,15 @@ class CategoryController extends Controller
         $request->validate([
             'type'                     => 'required|min:4|max:255',
             'restaurant_id'            => 'required|numeric|exists:restaurants,id',
-            // 'image'    => 'file|image',
+            'image'                    => 'required|file|image'
         ]);
 
         $category->type = $request->type;
         $category->restaurant_id = $request->restaurant_id;
         $category->image = $request->image;
+        $image = $request->image;
+        $path = $image->store('category-images', 'public');
+        $category->image = $path;
         $category->slug = Str::slug($request->type, '-');
         $category->save();
         return redirect()->route('categories.show', $category);
