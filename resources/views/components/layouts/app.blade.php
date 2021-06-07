@@ -53,6 +53,8 @@
       $('label').removeClass('night');
       $('button').removeClass('night');
       $('section').removeClass('night');
+      $('.hero-body').removeClass('night');
+      $('h1').removeClass('night');
     });
     </script>
   </body>
