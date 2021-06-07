@@ -17,7 +17,7 @@ class CreateComponentMealTable extends Migration
             $table->id();
             $table->foreignId('component_id');
             $table->foreignId('meal_id');
-            $table->float('weight');
+            // $table->float('weight');
             $table->timestamps();
         });
     }

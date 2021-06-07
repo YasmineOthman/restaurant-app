@@ -38,7 +38,7 @@
             <div class="select @error('category_id')is-danger @enderror">
               <select name="category_id" value="{{ old('category_id') }}">
                 @foreach ($categories as $category)
-                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                  <option value="{{ $category->id }}">{{ $category->type }}</option>
                 @endforeach
               </select>
             </div>
