@@ -43,17 +43,22 @@ class MealController extends Controller
     {
         $request->validate([
             'name'                     => 'required|min:4|max:255',
-            'price'                     => 'required|numeric',
-            'calory'                     => 'required|numeric',
-            'category_id'            => 'required|numeric|exists:categories,id',
-            'components'                      => 'array',
-            // 'image'    => 'file|image',
+            'price'                    => 'required|numeric',
+            'calory'                   => 'required|numeric',
+            'category_id'              => 'required|numeric|exists:categories,id',
+            'components'               => 'array',
+            'image'                    => 'required|file|image'
         ]);
         $meal = new Meal();
         $meal->name = $request->name;
         $meal->price = $request->price;
         $meal->calory = $request->calory;
         $meal->image = $request->image;
+
+        $image = $request->image;
+        $path = $image->store('meal-images', 'public');
+        $meal->image = $path;
+
         $meal->category_id = $request->category_id;
         $meal->slug = Str::slug($request->name, '-');
         $meal->save();
@@ -98,17 +103,20 @@ class MealController extends Controller
     {
         $request->validate([
             'name'                     => 'required|min:4|max:255',
-            'price'                     => 'required|numeric',
-            'calory'                     => 'required|numeric',
-            'category_id'            => 'required|numeric|exists:categories,id',
-            'components'                      => 'array',
-            // 'image'    => 'file|image',
+            'price'                    => 'required|numeric',
+            'calory'                   => 'required|numeric',
+            'category_id'              => 'required|numeric|exists:categories,id',
+            'components'               => 'array',
+            'image'                    => 'required|file|image'
         ]);
 
         $meal->name = $request->name;
         $meal->price = $request->price;
         $meal->calory = $request->calory;
         $meal->image = $request->image;
+        $image = $request->image;
+        $path = $image->store('meal-images', 'public');
+        $meal->image = $path;
         $meal->category_id = $request->category_id;
         $meal->slug = Str::slug($request->name, '-');
         $meal->save();
