@@ -61,8 +61,15 @@ footer{
     position: fixed;
     bottom:0;
 }
+.hero-body{
+    background-color: #eb640a;
+}
+h1{
+    color:black;
+}
 
 .night{
     background:black;
     color:white;
 }
+
