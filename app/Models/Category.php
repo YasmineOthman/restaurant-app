@@ -20,4 +20,8 @@ class Category extends Model
     {
         return 'slug';
     }
+    public function getImageAttribute($value)
+    {
+        return asset("storage/{$value}");
+    }
 }

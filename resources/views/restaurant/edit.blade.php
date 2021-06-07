@@ -10,7 +10,7 @@
 <section class="section">
 <div class="container">
     <div class="title is-2 form">Edit {{ $restaurant->name }} information</div>
-    <form action="{{ route('restaurants.update',$restaurant) }}" method="POST" class="form" >
+    <form action="{{ route('restaurants.update',$restaurant) }}" method="POST" enctype="multipart/form-data" >
      @csrf
      <input type="hidden" name="_method" value="PUT">
      <div class="field">

@@ -2,7 +2,7 @@
   <section class="section">
   <div class="container">
       <div class="title is-2 form">Edit {{ $category->type }} information</div>
-      <form action="{{ route('categories.update',$category) }}" method="POST" class="form" >
+      <form action="{{ route('categories.update',$category) }}" method="POST"  enctype="multipart/form-data" >
         @csrf
         <input type="hidden" name="_method" value="PUT">
        <div class="field">

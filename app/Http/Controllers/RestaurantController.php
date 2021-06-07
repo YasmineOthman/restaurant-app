@@ -42,12 +42,15 @@ class RestaurantController extends Controller
             'name'                     => 'required|min:4|max:255',
             'city'                     => 'required|min:4',
             'address'                  => 'required|min:4',
-            'description'              => 'required|min:4'
-            // 'image'    => 'file|image',
+            'description'              => 'required|min:4',
+            'image'                    => 'required|file|image'
         ]);
         $restaurant = new Restaurant();
         $restaurant->name = $request->name;
         $restaurant->image = $request->image;
+        $image = $request->image;
+        $path = $image->store('restaurant-images', 'public');
+        $restaurant->image = $path;
         $restaurant->city = $request->city;
         $restaurant->address = $request->address;
         $restaurant->description= $request->description;
@@ -95,12 +98,15 @@ class RestaurantController extends Controller
             'name'                     => 'required|min:4|max:255',
             'city'                     => 'required|min:4',
             'address'                  => 'required|min:4',
-            'description'              => 'required|min:4'
-            // 'image'                    => 'required|file|image',
+            'description'              => 'required|min:4',
+            'image'                    => 'required|file|image'
         ]);
 
         $restaurant->name = $request->name;
         $restaurant->image = $request->image;
+        $image = $request->image;
+        $path = $image->store('restaurant-images', 'public');
+        $restaurant->image = $path;
         $restaurant->city = $request->city;
         $restaurant->address = $request->address;
         $restaurant->description= $request->description;

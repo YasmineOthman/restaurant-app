@@ -2,7 +2,7 @@
   <section class="section">
   <div class="container">
       <div class="title is-2 form">Create Meal</div>
-      <form action="{{ route('meals.store') }} " method="POST">
+      <form action="{{ route('meals.store') }} " method="POST" enctype="multipart/form-data">
        @csrf
        <div class="field">
           <label class="label form"> Meal Name</label>

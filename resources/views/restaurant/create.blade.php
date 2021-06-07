@@ -11,7 +11,7 @@
 <div class="container">
     <div class="title is-2 form">Create Your Restaurant</div>
 
-    <form action=" {{route('restaurants.store')}}" method="POST">
+    <form action=" {{route('restaurants.store')}}" method="POST" enctype="multipart/form-data">
       @csrf
         <div class="field">
 
