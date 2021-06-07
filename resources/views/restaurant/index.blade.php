@@ -14,16 +14,17 @@
                   <div class="card-content">
                     <div class="media">
                       <div class="media-content">
-                        <p class="title is-4">{{ $restaurant->name }}</p>
-
+                        <span class="title is-4">{{ $restaurant->name }}</span><br>
+                        <span style="color: black">{{$restaurant->city}} -</span>
+                      <span style="color: black">{{$restaurant->address}}</span>
                       </div>
                     </div>
-                    <div class="content">
-                      <span style="color: black">{{$restaurant->address}}</span>
-                      <a href="{{ route('restaurants.show', $restaurant->id) }}" style="color: blue;text-decoration: none;">show</a>
-                      <br>
-                      <time datetime="2016-1-1">{{ $restaurant->created_at }}</time>
-                    </div>
+                    {{-- <div class="content">
+
+                      {{-- <a href="{{ route('restaurants.show', $restaurant->id) }}" style="color: blue;text-decoration: none;">show</a> --}}
+                      {{-- <br> --}}
+                      {{-- <time datetime="2016-1-1">{{ $restaurant->created_at }}</time> --}}
+                    {{-- </div>  --}}
                   </div>
                 </div>
               </a>

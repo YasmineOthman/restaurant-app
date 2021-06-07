@@ -41,7 +41,8 @@
       $('label').addClass('night');
       $('button').addClass('night');
       $('section').addClass('night');
-
+      $('.hero-body').addClass('night');
+      $('h1').addClass('night');
     });
     $('.js-go-day').click(function(){
       // alert('Go to day mode - replace me with the CSS changing code!');
