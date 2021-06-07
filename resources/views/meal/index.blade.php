@@ -5,7 +5,7 @@
           @foreach ($meals as $meal)
           <div class="column is-4">
             <a href="{{ route('meals.show', $meal) }}" style="text-decoration: none;">
-              <div class="card" style="height: 100%;" id="postcard">
+              <div class="card " style="height: 100%;" id="postcard">
                 <div class="card-image" id="postimage">
                   <figure class="image is-4by3" >
                     <img src="{{ $meal-> image }}" alt="Placeholder image" >
@@ -19,10 +19,12 @@
                     </div>
                   </div>
                   <div class="content">
-                    <span style="color: black">{{$meal->price}}</span>
-                    <a href="{{ route('meals.show', $meal->id) }}" style="color: blue;text-decoration: none;">show</a>
+                    <span  class="form">{{$meal->price}} SYP</span>
                     <br>
-                    <time datetime="2016-1-1">{{ $meal->calory }}</time>
+                    <span><time datetime="2016-1-1" class="form">{{ $meal->calory }} Calories</time></span><br>
+                    <a href="{{ route('meals.show', $meal) }} " style="color: black;">show</a>
+                    <a href="# " style="color: black;">Order</button></a>
+
                   </div>
                 </div>
               </div>
