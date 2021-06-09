@@ -3,11 +3,11 @@
     <div class="container">
       <div class="content mycontent">
         <ul style="list-style-type: none" class="tag-list">
-          {{$sum = 0}}
-          @foreach ($order->meals as $meal)
+          {{-- {{$sum}} --}}
+          {{-- @foreach ($order->meals as $meal)
             <li><a href="{{route('meals.show',$meal)}}" style="text-decoration:none; color:blue"><b>#{{$meal->name}} &nbsp;</b></a></li>
           {{$sum = $meal->price + $sum}}
-            @endforeach
+            @endforeach --}}
         </ul>
        cost is {{$sum}}
       </div>

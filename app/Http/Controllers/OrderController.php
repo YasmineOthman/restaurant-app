@@ -70,7 +70,8 @@ class OrderController extends Controller
         foreach ($order->meals as $meal){
           $sum = $meal->price + $sum;
         }
-       return $sum;
+        echo "<script>alert('Cost is $sum');</script>";
+    // return redirect()->route('orders.show', $order);
     }
 
     /**
