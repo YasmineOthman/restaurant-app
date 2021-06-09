@@ -4,8 +4,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\MealOrderController;
 use App\Http\Controllers\RestaurantController;
 
 /*
@@ -24,8 +26,9 @@ Route::resource('restaurants', RestaurantController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('meals', MealController::class);
 Route::resource('components',ComponentController::class);
-
-
+Route::resource('orders',OrderController::class);
+Route::post('/mealorder/{id}',[MealOrderController::class,'storeorder'])->name('meal-order.storeorder');
+Route::resource('mealorder',MealOrderController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

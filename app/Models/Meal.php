@@ -28,4 +28,5 @@ class Meal extends Model
     {
         return asset("storage/{$value}");
     }
+
 }

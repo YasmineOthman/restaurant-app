@@ -15,7 +15,7 @@
             <li><a href="{{ route('meals.edit', $meal) }}"style="text-decoration:none; color:#eb640a;"><b>Edit</b></a></li>
             {{-- <li><a href="{{ route('restaurants.delete', $restaurant->id) }}" style="text-decoration:none; color:#eb640a;"><b>Delete</b></a></li> --}}
             <li><a href="{{ route('meals.create') }}"style="text-decoration:none; color:#eb640a;"><b>Create New Meal</b></a></li>
-            <li><a href="#"style="text-decoration:none; color:#eb640a;"><b>Add To Order</b></a></li>
+            <li><a href="{{route('mealorder.show', $meal->id)}}"style="text-decoration:none; color:#eb640a;"><b>Add To Order</b></a></li>
             <li><a href="#"style="text-decoration:none; color:#eb640a;"><b>Order more</b></a></li>
 
             <li><a href="{{ route('meals.index') }}"style="text-decoration:none; color:#eb640a;"><b>Show Meal in same category</b></a></li>

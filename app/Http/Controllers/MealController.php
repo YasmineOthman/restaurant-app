@@ -65,6 +65,11 @@ class MealController extends Controller
         $meal->components()->sync($request->components);
         return redirect()->route('meals.show', $meal);
     }
+    public function order(Meal $meal)
+    {
+           // return($meal->name);
+           dd($meal->name);
+    }
 
     /**
      * Display the specified resource.
@@ -74,6 +79,7 @@ class MealController extends Controller
      */
     public function show(Meal $meal)
     {
+        // dd($meal->id);
         return view('meal.show',['meal' => $meal]);
     }
 

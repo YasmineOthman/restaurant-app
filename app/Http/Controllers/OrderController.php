@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meal;
 use App\Models\Order;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -24,7 +26,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $meals = Meal::all();
+        return view ('order.create',['meals'=>$meals]);
     }
 
     /**
@@ -35,7 +38,23 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'place'                     => 'required|min:4|max:255',
+            'notes'                     => 'required|min:4|max:255',
+            'meals'                     => 'array'
+        ]);
+        $order = new Order();
+
+        $order->place = $request->place;
+        $order->notes = $request->notes;
+        // $order->user_id = 1;
+        $order->restaurant_id = 1;
+        $order->discount_id = 1;
+        // $order->quantity = 1;
+        $order->slug = Str::slug($request->place, '-');
+        $order->save();
+        $order->meals()->sync($request->meals);
+        return redirect()->route('orders.show', $order);
     }
 
     /**
