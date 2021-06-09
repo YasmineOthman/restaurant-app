@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Models\Meal;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\PageController;
@@ -28,6 +29,17 @@ Route::resource('meals', MealController::class);
 Route::resource('components',ComponentController::class);
 Route::resource('orders',OrderController::class);
 Route::post('/mealorder/{id}',[MealOrderController::class,'storeorder'])->name('meal-order.storeorder');
+Route::get('/order/{id}',[OrderController::class,'createorder'])->name('res-order.createorder');;
+//  Route::get('/order/create', function (Restaurant $restaurant) {
+//     // $restaurant = Restautaurant::findOrFail($id);
+//     dd('hello');
+//     $meals = Meal::all();
+//     // $restaurants = Restaurant::all();
+//     // $restaurant = Restaurant::where('restaurant_id' , '=' , $id)->get();
+//     // $meals = Meal::where('meal_id' , '=' , $meal_id)->get();
+//     return view ('order.create',['meals'=>$meals,'restaurant'=>$restaurant]);
+    // return view('pages.post', ['post' => $post]);
+// });
 Route::resource('mealorder',MealOrderController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');

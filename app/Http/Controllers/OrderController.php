@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Meal;
 use App\Models\Order;
+use App\Models\Category;
+use App\Models\Restaurant;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -26,9 +28,18 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $meals = Meal::all();
-        return view ('order.create',['meals'=>$meals]);
+        //
     }
+     public function createorder($id){
+        // dd('hello');
+        $meals = Meal::all();
+        $restaurant = Restaurant::findOrFail($id);
+        $categories = Category ::all();
+        // $restaurants = Restaurant::all();
+        // $restaurant = Restaurant::where('restaurant_id' , '=' , $id)->get();
+        // $meals = Meal::where($category->restaurant_id , '=' , $id)->get();
+        return view ('order.create',['meals'=>$meals,'restaurant'=>$restaurant,'categories'=>$categories]);
+        }
 
     /**
      * Store a newly created resource in storage.

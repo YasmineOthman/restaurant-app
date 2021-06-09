@@ -18,8 +18,9 @@
               <li><a href="{{ route('restaurants.create') }}"style="text-decoration:none; color:#eb640a;"><b>Create New Restaurant</b></a></li>
               <li><a href="{{ route('categories.create' )}}"style="text-decoration:none; color:#eb640a;">
               <b>Add Category</b></a></li>
-               <li><a href="{{ route('orders.create' )}}"style="text-decoration:none; color:#eb640a;">
+               <li><a href="{{route('res-order.createorder',$restaurant->id)}}"style="text-decoration:none; color:#eb640a;">
                 <b> Make Order</b></a></li>
+                {{-- ="/posts/{{ $post->id }}" --}}
             </ul>
           </div>
         </nav>
