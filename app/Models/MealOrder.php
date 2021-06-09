@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class MealOrder extends Model
 {
     use HasFactory;
-    public function meal()
-    {
-        return $this->belongsTo(Meal::class);
-    }
-    public function order()
-    {
-        return $this->belongsTo(Order::class);
-    }
+    // public function meal()
+    // {
+    //     return $this->belongsTo(Meal::class);
+    // }
+    // public function order()
+    // {
+    //     return $this->belongsTo(Order::class);
+    // }
 }

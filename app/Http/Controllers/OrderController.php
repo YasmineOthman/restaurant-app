@@ -32,14 +32,15 @@ class OrderController extends Controller
     }
      public function createorder($id){
         // dd('hello');
-        $meals = Meal::all();
         $restaurant = Restaurant::findOrFail($id);
         $categories = Category ::all();
+        $meals = Meal::all();
         // $restaurants = Restaurant::all();
         // $restaurant = Restaurant::where('restaurant_id' , '=' , $id)->get();
         // $meals = Meal::where($category->restaurant_id , '=' , $id)->get();
         return view ('order.create',['meals'=>$meals,'restaurant'=>$restaurant,'categories'=>$categories]);
-        }
+
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -55,13 +56,11 @@ class OrderController extends Controller
             'meals'                     => 'array'
         ]);
         $order = new Order();
-
         $order->place = $request->place;
         $order->notes = $request->notes;
-        // $order->user_id = 1;
+         $order->user_id = 1;
         $order->restaurant_id = 1;
         $order->discount_id = 1;
-        // $order->quantity = 1;
         $order->slug = Str::slug($request->place, '-');
         $order->save();
         $order->meals()->sync($request->meals);
@@ -76,7 +75,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('order.show',['order'=>$order]);
     }
 
     /**

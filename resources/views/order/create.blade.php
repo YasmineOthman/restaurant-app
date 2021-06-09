@@ -15,26 +15,24 @@
         <p class="help is-danger">{{ $message }}</p>
       @enderror
     </div>
-
     <div class="field">
       <label class="label">Meals</label>
-      <div class="control" id="category">
-        <div class="select is-multiple @error('categories')is-danger @enderror">
-          <select name="categories[]"  multiple>
-            {{-- @foreach ($meals as $meal) --}}
+      <div class="control" id="meal">
+        <div class="select is-multiple @error('meals')is-danger @enderror">
+          <select name="meals[]"  multiple>
             @foreach ($restaurant->categories as $category)
             @foreach ($category->meals as $meal)
               <option value="{{ $meal->id }}">{{ $meal->name }}</option>
-              {{-- <option value="{{ $category->id }}">{{ $category->type }}</option> --}}
               @endforeach
               @endforeach
           </select>
         </div>
       </div>
-      @error('categories')
+      @error('meals')
         <p class="help is-danger">{{ $message }}</p>
       @enderror
     </div>
+
     <div class="field">
       <label class="label form">Notes</label>
       <div class="control">
