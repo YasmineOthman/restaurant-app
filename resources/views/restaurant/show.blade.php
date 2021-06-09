@@ -18,8 +18,8 @@
               <li><a href="{{ route('restaurants.create') }}"style="text-decoration:none; color:#eb640a;"><b>Create New Restaurant</b></a></li>
               <li><a href="{{ route('categories.create' )}}"style="text-decoration:none; color:#eb640a;">
               <b>Add Category</b></a></li>
-              {{-- <li><a href="{{ route('categories.show' )}}"style="text-decoration:none; color:#eb640a;">
-                <b> Categories</b></a></li> --}}
+               <li><a href="{{ route('orders.create' )}}"style="text-decoration:none; color:#eb640a;">
+                <b> Make Order</b></a></li>
             </ul>
           </div>
         </nav>
