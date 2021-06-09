@@ -64,7 +64,13 @@ class OrderController extends Controller
         $order->slug = Str::slug($request->place, '-');
         $order->save();
         $order->meals()->sync($request->meals);
-        return redirect()->route('orders.show', $order);
+        // dd($order->meals);
+        // return redirect()->route('orders.show', $order);
+        $sum = 0;
+        foreach ($order->meals as $meal){
+          $sum = $meal->price + $sum;
+        }
+       return $sum;
     }
 
     /**
