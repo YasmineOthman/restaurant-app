@@ -74,21 +74,21 @@ h1{
     color:white;
 } */
 
-.darkmode--activated p,
+ .darkmode--activated p,
  .darkmode--activated li,
- .darkmode--activated h3,
- .darkmode--activated h1 {
+ .darkmode--activated h3{
+ /* .darkmode--activated h1 { */
     color: #eb640a;
 
   }
-  .darkmode--activated .hero-body{
+  /* .darkmode--activated .hero-body{
     background-color: #fff;
-  }
-  .button {
+  } */
+  /* .button {
     isolation: isolate;
   }
 
   .darkmode--activated .logo {
     mix-blend-mode: difference;
-  }
+  } */
 
