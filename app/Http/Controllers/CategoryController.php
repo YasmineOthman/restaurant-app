@@ -19,6 +19,19 @@ class CategoryController extends Controller
         $categories = Category::all();
         return view('category.index', ['categories' => $categories]);
     }
+    public function search( Request $request)
+    {
+        $name=  $request->name;
+        $search =  $request->search;
+        if ($name== null){
+            echo "<script>alert('please enter word to search');</script>";
+        }
+        if($search == "type" or $search == null){
+           $categories = Category:: where('type', 'like', '%'.$name.'%')->get();
+           return view('category.index', ['categories' => $categories]);
+        }
+
+    }
 
     /**
      * Show the form for creating a new resource.

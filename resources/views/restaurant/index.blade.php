@@ -1,4 +1,5 @@
 <x-layouts.app>
+  <x-navbar />
     <section class="section">
       <div class="container">
         <div class="columns is-multiline">

@@ -31,6 +31,7 @@ Route::resource('orders',OrderController::class);
 Route::post('/mealorder/{id}',[MealOrderController::class,'storeorder'])->name('meal-order.storeorder');
 Route::get('/order/{id}',[OrderController::class,'createorder'])->name('res-order.createorder');;
 Route::get('/restaurant',[RestaurantController::class,'search'])->name('restaurants.search');;
+Route::get('/category',[CategoryController::class,'search'])->name('categories.search');;
 
 //  Route::get('/order/create', function (Restaurant $restaurant) {
 //     // $restaurant = Restautaurant::findOrFail($id);

@@ -1,4 +1,5 @@
 <x-layouts.app>
+  <x-navbar />
     <section class="hero is-success is-small">
       <div class="hero-body"  >
         <div class="container has-text-centered" >

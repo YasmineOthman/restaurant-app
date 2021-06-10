@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   </head>
   <body>
-  <x-navbar />
+  {{-- <x-navbar /> --}}
   {{ $slot }}
   <x-footer />
   {{ $scripts ?? '' }}
@@ -19,11 +19,9 @@
   <script>
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
-
     var pusher = new Pusher('d3dc19b1d57129ecf0f0', {
       cluster: 'mt1'
     });
-
       var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
       alert(JSON.stringify(data));
@@ -56,8 +54,6 @@
     //   $('.hero-body').removeClass('night');
     //   $('h1').removeClass('night');
     // });
-
-
   function addDarkmodeWidget() {
     new Darkmode().showWidget();
   }
@@ -75,10 +71,8 @@
   // label: '🌓', // default: ''
   autoMatchOsTheme: true // default: true
 }
-
 const darkmode = new Darkmode(options);
 darkmode.showWidget();
 </script>
-
-  </body>
+</body>
 </html>

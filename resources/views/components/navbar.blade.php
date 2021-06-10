@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="https://www.facebook.com/Sanabel.ngo" style="color: #eb640a">FOODY</a>
@@ -30,6 +31,8 @@
             </ul>
           </li>
         </ul>
+        {{-- {{$slot}} --}}
+
         <form class="d-flex" action="{{ route('restaurants.search') }}" method="GET">
           <input name="name" id="search"class="form-control me-2" type="search" placeholder="Enter name,city or address of Restaurant" aria-label="Search" style="border-color:#eb640a">
            {{-- <li class="nav-item dropdown">
@@ -84,4 +87,5 @@
       </div>
     </div>
   </nav>
+
 
