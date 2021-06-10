@@ -30,8 +30,8 @@
             </ul>
           </li>
         </ul>
-        <form class="d-flex">
-          <input id="search"class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="border-color:#eb640a">
+        <form class="d-flex" action="{{ route('restaurants.search') }}" method="GET">
+          <input name="name" id="search"class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="border-color:#eb640a">
           <button class="btn btn-success" type="submit">Search</button>
         </form>
         <li class="nav-item dropdown">

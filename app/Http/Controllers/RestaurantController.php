@@ -16,9 +16,21 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurants = Restaurant::all();
+        // $restaurants = Restaurant:: where('name', 'like', '%raw%')->get();
         return view('restaurant.index', ['restaurants' => $restaurants]);
     }
+    public function search( Request $request)
+    {
+        // dd($request->name);
+        $name =  $request->name;
+        // dd($name);
 
+        $restaurants = Restaurant:: where('name', 'like', '%'.$name.'%')->get();
+        // foreach($restaurants as $restaurant){
+        // dd($restaurant->name);
+        // }
+        return view('restaurant.index', ['restaurants' => $restaurants]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -26,6 +38,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+        dd('fadia al matar');
         return view('restaurant.create');
     }
 
