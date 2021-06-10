@@ -1,4 +1,5 @@
 <x-layouts.app>
+  <x-search/>
   <section class="section">
   <div class="container">
       <div class="title is-2 form">Edit {{ $category->type }} information</div>

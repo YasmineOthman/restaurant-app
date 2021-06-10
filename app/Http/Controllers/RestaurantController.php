@@ -46,7 +46,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        dd('fadia al matar');
+        // dd('fadia al matar');
         return view('restaurant.create');
     }
 

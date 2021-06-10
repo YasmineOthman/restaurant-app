@@ -20,6 +20,35 @@ class MealController extends Controller
         $meals = Meal::all();
         return view('meal.index', ['meals' => $meals]);
     }
+    public function search( Request $request)
+    {
+        $name =  $request->name;
+        $search =  $request->search;
+        if ($name == null){
+            echo "<script>alert('please enter word to search');</script>";
+        }
+        if($search == "name" or $search == null){
+           $meals = Meal:: where('name', 'like', '%'.$name.'%')->get();
+           return view('meal.index', ['meals' => $meals]);
+        }
+        if($search == "price"){
+            $meals = Meal:: where('price' , $name)->get();
+            return view('meal.index', ['meals' => $meals]);
+            }
+        if($search == "pricemore"){
+            $meals = Meal:: where('price','>=' , $name)->get();
+            return view('meal.index', ['meals' => $meals]);
+                }
+        if($search == "priceless"){
+             $meals = Meal:: where('price','<=' , $name)->get();
+             return view('meal.index', ['meals' => $meals]);
+        }
+        if($search == "calory"){
+            $meals = Meal:: where('calory' , $name)->get();
+            return view('meal.index', ['meals' => $meals]);
+            }
+
+    }
 
     /**
      * Show the form for creating a new resource.

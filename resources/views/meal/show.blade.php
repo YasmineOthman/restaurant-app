@@ -1,4 +1,5 @@
 <x-layouts.app>
+  <x-search--meal/>
   <section class="hero is-success is-small">
     <div class="hero-body" style="background-color: #eb640a;">
       <div class="container has-text-centered" >
