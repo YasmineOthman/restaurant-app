@@ -48,11 +48,11 @@
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #eb640a">
             Mode
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item js-go-day" href="#"style="color: #eb640a">DAY</a></li>
-              <li><a class="dropdown-item js-go-night" href="#"style="color: #eb640a">NIGHT</a></li>
-
-          </ul>
+          {{-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> --}}
+              {{-- <li><a class="dropdown-item js-go-day" href="#"style="color: #eb640a">DAY</a></li> --}}
+              {{-- <li><a class="dropdown-item js-go-night" href="#"style="color: #eb640a">NIGHT</a></li> --}}
+              {{-- <button onclick="addDarkmodeWidget()">Click me</button> --}}
+          {{-- </ul> --}}
       </li>
       </div>
     </div>

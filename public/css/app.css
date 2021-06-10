@@ -66,10 +66,29 @@ footer{
 }
 h1{
     color:black;
+    text-align: center;
 }
 
-.night{
+/* .night{
     background:black;
     color:white;
-}
+} */
+
+.darkmode--activated p,
+ .darkmode--activated li,
+ .darkmode--activated h3,
+ .darkmode--activated h1 {
+    color: #eb640a;
+
+  }
+  .darkmode--activated .hero-body{
+    background-color: #fff;
+  }
+  .button {
+    isolation: isolate;
+  }
+
+  .darkmode--activated .logo {
+    mix-blend-mode: difference;
+  }
 

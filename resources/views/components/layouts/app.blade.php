@@ -30,32 +30,39 @@
     });
   </script>
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script>
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+ <script>
+    // $('.js-go-night').click(function(){
+    //   // alert('Go to night mode - replace me with the CSS changing code!');
+    //   $('body').addClass('night');
+    //   $('div').addClass('night');
+    //   $('li').addClass('night');
+    //   $('form').addClass('night');
+    //   $('label').addClass('night');
+    //   $('button').addClass('night');
+    //   $('section').addClass('night');
+    //   $('.hero-body').addClass('night');
+    //   $('h1').addClass('night');
+    // });
+    // $('.js-go-day').click(function(){
+    //   // alert('Go to day mode - replace me with the CSS changing code!');
+    //   $('body').removeClass('night');
+    //   $('div').removeClass('night');
+    //   $('li').removeClass('night');
+    //   $('form').removeClass('night');
+    //   $('label').removeClass('night');
+    //   $('button').removeClass('night');
+    //   $('section').removeClass('night');
+    //   $('.hero-body').removeClass('night');
+    //   $('h1').removeClass('night');
+    // });
 
-    $('.js-go-night').click(function(){
-      // alert('Go to night mode - replace me with the CSS changing code!');
-      $('body').addClass('night');
-      $('div').addClass('night');
-      $('li').addClass('night');
-      $('form').addClass('night');
-      $('label').addClass('night');
-      $('button').addClass('night');
-      $('section').addClass('night');
-      $('.hero-body').addClass('night');
-      $('h1').addClass('night');
-    });
-    $('.js-go-day').click(function(){
-      // alert('Go to day mode - replace me with the CSS changing code!');
-      $('body').removeClass('night');
-      $('div').removeClass('night');
-      $('li').removeClass('night');
-      $('form').removeClass('night');
-      $('label').removeClass('night');
-      $('button').removeClass('night');
-      $('section').removeClass('night');
-      $('.hero-body').removeClass('night');
-      $('h1').removeClass('night');
-    });
-    </script>
+
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
   </body>
 </html>

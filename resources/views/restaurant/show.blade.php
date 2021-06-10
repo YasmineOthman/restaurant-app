@@ -5,7 +5,7 @@
           <img src="{{ $restaurant-> image }}" alt="Placeholder image"  >
         </div>
           <p class="title">
-            <h1 style="text-align: center">{{$restaurant->name}} Restaurant</h1>
+            <h1>{{$restaurant->name}} Restaurant</h1>
           </p>
 
       </div>
