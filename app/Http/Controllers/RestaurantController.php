@@ -23,13 +23,20 @@ class RestaurantController extends Controller
     {
         // dd($request->name);
         $name =  $request->name;
-        // dd($name);
-
+        $search =  $request->search;
+        // dd($city);
+        if($search == "name"){
         $restaurants = Restaurant:: where('name', 'like', '%'.$name.'%')->get();
-        // foreach($restaurants as $restaurant){
-        // dd($restaurant->name);
-        // }
         return view('restaurant.index', ['restaurants' => $restaurants]);
+        }
+        if($search == "city"){
+            $restaurants = Restaurant:: where('city', 'like', '%'.$name.'%')->get();
+            return view('restaurant.index', ['restaurants' => $restaurants]);
+            }
+        if($search == "address"){
+             $restaurants = Restaurant:: where('address', 'like', '%'.$name.'%')->get();
+             return view('restaurant.index', ['restaurants' => $restaurants]);
+             }
     }
     /**
      * Show the form for creating a new resource.

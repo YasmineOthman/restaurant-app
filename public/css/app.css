@@ -18,7 +18,7 @@ width:100%;
 }
 .form-button{
 background-color:#eb640a ;
-color: black;
+color: #000;
 margin-bottom: 20px;
 width: 100px;
 height: 30px;
@@ -27,22 +27,31 @@ font-weight: bold;
 .navbar{
     height: 10%;
 }
-.navbar a:hover{
-   background-color: black;
+.navbar a:hover,option:active{
+   background-color: #000;
 }
 .btn-primary,.btn-primary:hover{
-   background-color: black;
+   background-color: #000;
    color:#eb640a ;
 }
 .btn-primary:hover{
    border-radius: 50%;
 }
-.btn-success:hover{
-   border-radius: 50%;
+.dropdown-menu{
+    color:#eb640a ;
+    background-color: #000;
 }
+.dropdown-menu:hover{
+    color:#000 ;
+    background-color: #eb640a;
+}
+
+/* .btn-success:hover{
+   border-radius: 50%; */
+/* } */
 .btn-success,.btn-success:hover{
    background-color: #eb640a;
-   color:black ;
+   color:#000 ;
 }
 .navbar-nav a{
    padding-right: 20px;
@@ -51,7 +60,7 @@ font-weight: bold;
    font-size: 1.1em !important;
 }
 footer{
-   background-color: black;
+   background-color: #000;
    color:  #eb640a;
    text-align: center;
    height: 5%;
@@ -65,7 +74,7 @@ footer{
     background-color: #eb640a;
 }
 h1{
-    color:black;
+    color:#000;
     text-align: center;
 }
 
