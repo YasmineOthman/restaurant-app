@@ -21,13 +21,14 @@ class RestaurantController extends Controller
     }
     public function search( Request $request)
     {
-        // dd($request->name);
         $name =  $request->name;
         $search =  $request->search;
-        // dd($city);
-        if($search == "name"){
-        $restaurants = Restaurant:: where('name', 'like', '%'.$name.'%')->get();
-        return view('restaurant.index', ['restaurants' => $restaurants]);
+        if ($name == null){
+            echo "<script>alert('please enter word to search');</script>";
+        }
+        if($search == "name" or $search == null){
+           $restaurants = Restaurant:: where('name', 'like', '%'.$name.'%')->get();
+           return view('restaurant.index', ['restaurants' => $restaurants]);
         }
         if($search == "city"){
             $restaurants = Restaurant:: where('city', 'like', '%'.$name.'%')->get();
