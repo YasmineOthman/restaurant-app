@@ -144,7 +144,6 @@ class MealController extends Controller
             'components'               => 'array',
             'image'                    => 'required|file|image'
         ]);
-
         $meal->name = $request->name;
         $meal->price = $request->price;
         $meal->calory = $request->calory;

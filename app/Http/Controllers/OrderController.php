@@ -70,7 +70,7 @@ class OrderController extends Controller
         foreach ($order->meals as $meal){
           $sum = $meal->price + $sum;
         }
-        echo "<script>alert('Cost is $sum');</script>";
+        echo "<script>confirm('Cost is $sum');</script>";
     // return redirect()->route('orders.show', $order);
     }
 
@@ -93,7 +93,8 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        return view('order.edit',['order' => $order]);
+
     }
 
     /**
@@ -105,7 +106,24 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $request->validate([
+            'place'                     => 'required|min:4|max:255',
+            'notes'                     => 'required|min:4|max:255',
+            'meals'                     => 'array'
+        ]);
+        $order->place = $request->place;
+        $order->notes = $request->notes;
+         $order->user_id = 1;
+        $order->restaurant_id = 1;
+        $order->discount_id = 1;
+        $order->slug = Str::slug($request->place, '-');
+        $order->save();
+        $order->meals()->sync($request->meals);
+        $sum = 0;
+        foreach ($order->meals as $meal){
+          $sum = $meal->price + $sum;
+        }
+        echo "<script>alert('Cost is $sum');</script>";
     }
 
     /**

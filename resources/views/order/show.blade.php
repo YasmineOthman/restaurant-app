@@ -9,7 +9,7 @@
           {{$sum = $meal->price + $sum}}
             @endforeach --}}
         </ul>
-       cost is {{$sum}}
+        <h1>Thanks for order from us your cost is {{$sum}}</h1>
       </div>
     </div>
   </section>

@@ -6,7 +6,7 @@
           $(document).ready(function () {
           $('.ckeditor').ckeditor();
           });
-</script>
+         </script>
     </x-slot>
 <section class="section">
 <div class="container">

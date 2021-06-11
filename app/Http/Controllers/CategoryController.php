@@ -101,7 +101,6 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-
         $request->validate([
             'type'                     => 'required|min:4|max:255',
             'restaurant_id'            => 'required|numeric|exists:restaurants,id',
@@ -117,6 +116,7 @@ class CategoryController extends Controller
         $category->slug = Str::slug($request->type, '-');
         $category->save();
         return redirect()->route('categories.show', $category);
+
     }
 
     /**

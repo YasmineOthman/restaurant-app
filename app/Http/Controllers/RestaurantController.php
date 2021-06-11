@@ -122,7 +122,6 @@ class RestaurantController extends Controller
             'description'              => 'required|min:4',
             'image'                    => 'required|file|image'
         ]);
-
         $restaurant->name = $request->name;
         $restaurant->image = $request->image;
         $image = $request->image;
