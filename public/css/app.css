@@ -100,4 +100,7 @@ h1{
   .darkmode--activated .logo {
     mix-blend-mode: difference;
   } */
+  input{
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
 

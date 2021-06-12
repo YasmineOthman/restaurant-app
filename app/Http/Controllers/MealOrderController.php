@@ -28,6 +28,7 @@ class MealOrderController extends Controller
         $mealorder->meal_id = $meal->id;
         $mealorder->order_id = 1;
         $mealorder->save();
+        dd("success");
         return redirect()->route('meals.index', $meal);
     }
     public function totalOrder()

@@ -14,11 +14,21 @@ class CreateMealOrderTable extends Migration
     public function up()
     {
         Schema::create('meal_order', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('meal_id');
-            $table->foreignId('order_id');
-            // $table->integer('quantity');
+            // $table->id();
+            $table->primary(['meal_id','order_id']);
+            // $table->foreignId('meal_id');
+            // $table->foreignId('order_id');
+              $table->bigInteger('meal_id')->unsigned();
+            $table->bigInteger('order_id')->unsigned();
+            $table->foreign('meal_id')
+            ->references('id')
+            ->on('meals');
+         $table->foreign('order_id')
+            ->references('id')
+            ->on('orders');
+            //  $table->integer('quantity');
             $table->timestamps();
+            // $table->string('note');
         });
     }
 
@@ -29,6 +39,6 @@ class CreateMealOrderTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meal_orders');
+        Schema::dropIfExists('meal_order');
     }
 }

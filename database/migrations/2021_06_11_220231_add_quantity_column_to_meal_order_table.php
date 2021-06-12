@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSearchToRestaurantsTable extends Migration
+class AddQuantityColumnToMealOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddSearchToRestaurantsTable extends Migration
      */
     public function up()
     {
-        Schema::table('restaurants', function (Blueprint $table) {
-            $table->string('search')->after('city');
+        Schema::table('meal_order', function (Blueprint $table) {
+            $table->integer('quantity');
         });
     }
 
@@ -25,10 +25,8 @@ class AddSearchToRestaurantsTable extends Migration
      */
     public function down()
     {
-        Schema::table('restaurants', function (Blueprint $table) {
-
-                $table->dropColumn('search');
-
+        Schema::table('meal_order', function (Blueprint $table) {
+            //
         });
     }
 }
