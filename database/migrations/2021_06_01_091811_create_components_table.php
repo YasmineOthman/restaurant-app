@@ -16,10 +16,7 @@ class CreateComponentsTable extends Migration
         Schema::create('components', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
-            $table->float('weight');
             $table->string('slug');
-            $table->foreignId('meal_id');
             $table->timestamps();
         });
     }

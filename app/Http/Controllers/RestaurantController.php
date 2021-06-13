@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
 {
@@ -15,9 +16,29 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurants = Restaurant::all();
-       return view('restaurant.index', ['restaurants' => $restaurants]);
+        // $restaurants = Restaurant:: where('name', 'like', '%raw%')->get();
+        return view('restaurant.index', ['restaurants' => $restaurants]);
     }
-
+    public function search( Request $request)
+    {
+        $name =  $request->name;
+        $search =  $request->search;
+        if ($name == null){
+            echo "<script>alert('please enter word to search');</script>";
+        }
+        if($search == "name" or $search == null){
+           $restaurants = Restaurant:: where('name', 'like', '%'.$name.'%')->get();
+           return view('restaurant.index', ['restaurants' => $restaurants]);
+        }
+        if($search == "city"){
+            $restaurants = Restaurant:: where('city', 'like', '%'.$name.'%')->get();
+            return view('restaurant.index', ['restaurants' => $restaurants]);
+            }
+        if($search == "address"){
+             $restaurants = Restaurant:: where('address', 'like', '%'.$name.'%')->get();
+             return view('restaurant.index', ['restaurants' => $restaurants]);
+             }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -25,6 +46,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+        // dd('fadia al matar');
         return view('restaurant.create');
     }
 
@@ -36,7 +58,28 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+
+            'name'                     => 'required|min:4|max:255',
+            'city'                     => 'required|min:4',
+            'address'                  => 'required|min:4',
+            'description'              => 'required|min:4',
+            'image'                    => 'required|file|image'
+        ]);
+        $restaurant = new Restaurant();
+        $restaurant->name = $request->name;
+        $restaurant->image = $request->image;
+        $image = $request->image;
+        $path = $image->store('restaurant-images', 'public');
+        $restaurant->image = $path;
+        $restaurant->city = $request->city;
+        $restaurant->address = $request->address;
+        $restaurant->description= $request->description;
+        $restaurant->slug = Str::slug($request->name, '-');
+        $restaurant->save();
+        return redirect()->route('restaurants.show', $restaurant);
+
+
     }
 
     /**
@@ -47,7 +90,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('restaurant.show', ['restaurant' => $restaurant]);
     }
 
     /**
@@ -58,8 +101,10 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+
+        return view('restaurant.edit',['restaurant' => $restaurant]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -70,7 +115,25 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        $request->validate([
+            'name'                     => 'required|min:4|max:255',
+            'city'                     => 'required|min:4',
+            'address'                  => 'required|min:4',
+            'description'              => 'required|min:4',
+            'image'                    => 'required|file|image'
+        ]);
+        $restaurant->name = $request->name;
+        $restaurant->image = $request->image;
+        $image = $request->image;
+        $path = $image->store('restaurant-images', 'public');
+        $restaurant->image = $path;
+        $restaurant->city = $request->city;
+        $restaurant->address = $request->address;
+        $restaurant->description= $request->description;
+        $restaurant->slug = Str::slug($request->name, '-');
+        $restaurant->save();
+        return redirect()->route('restaurants.show', $restaurant);
+
     }
 
     /**

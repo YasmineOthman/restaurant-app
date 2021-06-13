@@ -10,7 +10,7 @@ class Meal extends Model
     use HasFactory;
     public function components()
     {
-        return $this->hasMany(Component::class);
+        return $this->belongsToMany(Component::class);
     }
     public function category ()
     {
@@ -24,4 +24,9 @@ class Meal extends Model
     {
         return 'slug';
     }
+    public function getImageAttribute($value)
+    {
+        return asset("storage/{$value}");
+    }
+
 }

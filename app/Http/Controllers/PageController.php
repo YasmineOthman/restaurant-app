@@ -10,6 +10,7 @@ class PageController extends Controller
     {
 
         return view('pages.home');
+        // return view('dashboard');
     }
 
 }

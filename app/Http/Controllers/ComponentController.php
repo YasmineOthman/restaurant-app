@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Component;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ComponentController extends Controller
@@ -14,7 +15,8 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        //
+        $components = Component::all();
+        return view('component.index',['components'=> $components]);
     }
 
     /**
@@ -24,7 +26,7 @@ class ComponentController extends Controller
      */
     public function create()
     {
-        //
+        return view ('component.create');
     }
 
     /**
@@ -35,7 +37,17 @@ class ComponentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'                     => 'required|min:3|max:255'
+
+        ]);
+        $component = new Component();
+        $component->name = $request->name;
+        $component->slug = Str::slug($request->name, '-');
+        $component->save();
+
+        // return redirect()->route('components.show', $component);
+        dd($component->name);
     }
 
     /**
@@ -46,7 +58,8 @@ class ComponentController extends Controller
      */
     public function show(Component $component)
     {
-        //
+        return view ('component.show',['component' => $component]);
+
     }
 
     /**
@@ -57,7 +70,7 @@ class ComponentController extends Controller
      */
     public function edit(Component $component)
     {
-        //
+        return view ('component.edit',['component' => $component]);
     }
 
     /**
@@ -69,7 +82,15 @@ class ComponentController extends Controller
      */
     public function update(Request $request, Component $component)
     {
-        //
+        $request->validate([
+            'name'                     => 'required|min:3|max:255'
+
+        ]);
+
+        $component->name = $request->name;
+        $component->slug = Str::slug($request->name, '-');
+        $component->save();
+        return redirect()->route('components.show', $component);
     }
 
     /**

@@ -10,14 +10,20 @@ class Order extends Model
     use HasFactory;
     public function meals()
     {
-        return $this->belongsToMany(Meal::class);
+        return $this->belongsToMany(Meal::class)->withpivot('quantity');
+
     }
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+    public function discount()
+    {
+        return $this->belongsTo(Discount::class);
+    }
     public function getRouteKeyName()
     {
         return 'slug';
     }
+
 }

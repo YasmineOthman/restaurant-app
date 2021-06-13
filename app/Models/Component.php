@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Component extends Model
 {
     use HasFactory;
-    public function meal()
+    public function meals()
     {
-     return $this->belongsTo(Meal::class);
+     return $this->belongsToMany(Meal::class);
     }
     public function getRouteKeyName()
     {
