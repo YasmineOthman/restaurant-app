@@ -50,16 +50,14 @@
                     <div class="media">
                       <div class="media-content">
                         <span class="title is-4 form">{{ $category->type }}</span><br>
-
                       </div>
                     </div>
-
                   </div>
                 </div>
               </a>
             </div>
-            @endforeach
-
+              @endforeach
+            </div>
           </div>
         </div>
 

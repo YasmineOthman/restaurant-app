@@ -11,7 +11,10 @@ html,body{
 width:100%;
 /* margin-bottom: 20px; */
 }
-
+.category-image{
+    width:100px;
+    height: 100px;
+}
 .form{
     color:#eb640a;
 
