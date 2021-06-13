@@ -7,6 +7,7 @@ use App\Http\Controllers\MealController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\MealOrderController;
 use App\Http\Controllers\RestaurantController;
@@ -32,7 +33,10 @@ Route::post('/mealorder/{id}',[MealOrderController::class,'storeorder'])->name('
 Route::get('/order/{id}',[OrderController::class,'createorder'])->name('res-order.createorder');;
 Route::get('/restaurant',[RestaurantController::class,'search'])->name('restaurants.search');;
 Route::get('/category',[CategoryController::class,'search'])->name('categories.search');;
-Route::get('/meal',[MealController::class,'search'])->name('meals.search');;
+Route::get('/meal',[MealController::class,'search'])->name('meals.search');
+
+Route::get("/chart", [ChartController::class,'Chart'])->name('chart');
+
 // Route::get('/order/{id}',[OrderController::class,'order'])->name('res-order.order');;
 
 //  Route::get('/order/create', function (Restaurant $restaurant) {
