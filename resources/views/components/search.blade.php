@@ -1,28 +1,28 @@
 
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="https://www.facebook.com/Sanabel.ngo" style="color: #eb640a">FOODY</a>
+    <a class="navbar-brand" href="https://www.facebook.com/Sanabel.ngo" style="color: orange">FOODY</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item ">
-          <a class="nav-link active" aria-current="page" href="/" style="color: #eb640a">Home</a>
+          <a class="nav-link active" aria-current="page" href="/" style="color: orange">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{{route('restaurants.index')}}" style="color: #eb640a">Restaurants</a>
+          <a class="nav-link active" href="{{route('restaurants.index')}}" style="color: orange">Restaurants</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#" style="color: #eb640a">Contact us</a>
+          <a class="nav-link active" href="#" style="color: orange">Contact us</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #eb640a">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">
             Account
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#"style="color: #eb640a">Log in</a></li>
-            <li><a class="dropdown-item" href="#" style="color: #eb640a">Sign in</a></li>
+            <li><a class="dropdown-item" href="#"style="color: #orange">Log in</a></li>
+            <li><a class="dropdown-item" href="#" style="color: #orange">Sign in</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><form action="#" method="post">
               @csrf
@@ -34,7 +34,7 @@
       <form class="d-flex" action="{{ route('categories.search') }}" method="GET">
         <input name="name" id="search"class="form-control me-2" type="search" placeholder="Enter type of category.." aria-label="Search" style="border-color:#eb640a">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #eb640a">
+        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">
       by</a>
       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
       <input type="radio" name="search" value="type"> type<br>
@@ -44,12 +44,12 @@
       <button class="btn btn-success" type="submit">Search</button>
       </form>
       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #eb640a">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">
             Language
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#"style="color: #eb640a">Arabic</a></li>
-              <li><a class="dropdown-item" href="#" style="color: #eb640a">English</a></li>
+              <li><a class="dropdown-item" href="#" style="color: orange">Arabic</a></li>
+              <li><a class="dropdown-item" href="#" style="color: orange">English</a></li>
 
           </ul>
       </li>

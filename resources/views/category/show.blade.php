@@ -12,11 +12,11 @@
       <nav class="tabs is-boxed is-fullwidth">
         <div class="container">
           <ul>
-            <li><a href="{{ route('categories.edit', $category) }}"style="text-decoration:none; color:#eb640a;"><b>Edit</b></a></li>
-            {{-- <li><a href="{{ route('restaurants.delete', $restaurant->id) }}" style="text-decoration:none; color:#eb640a;"><b>Delete</b></a></li> --}}
-            <li><a href="{{ route('categories.create') }}"style="text-decoration:none; color:#eb640a;"><b>Create New Category</b></a></li>
-            {{-- <li><a href="{{ route('categories.show', $post->category) }}"style="text-decoration:none; color:#eb640a;"><b>Show related Posts</b></a></li> --}}
-            <li><a href="{{ route('meals.create' )}}"style="text-decoration:none; color:#eb640a;">
+            <li><a href="{{ route('categories.edit', $category) }}"style="text-decoration:none; color:orange;"><b>Edit</b></a></li>
+            {{-- <li><a href="{{ route('restaurants.delete', $restaurant->id) }}" style="text-decoration:none; color:orange;"><b>Delete</b></a></li> --}}
+            <li><a href="{{ route('categories.create') }}"style="text-decoration:none; color:orange;"><b>Create New Category</b></a></li>
+            {{-- <li><a href="{{ route('categories.show', $post->category) }}"style="text-decoration:none; color:orange;"><b>Show related Posts</b></a></li> --}}
+            <li><a href="{{ route('meals.create' )}}"style="text-decoration:none; color:orange;">
               <b>Add Meal</b></a></li>
           </ul>
         </div>

@@ -1,7 +1,7 @@
 <x-layouts.app>
   <x-search--meal/>
   <section class="hero is-success is-small">
-    <div class="hero-body" style="background-color: #eb640a;">
+    <div class="hero-body" style="background-color: orange;">
       <div class="container has-text-centered" >
         <p class="title">
           <h1 style="color:black;">{{$meal->name}}</h1>
@@ -13,14 +13,14 @@
       <nav class="tabs is-boxed is-fullwidth">
         <div class="container">
           <ul>
-            <li><a href="{{ route('meals.edit', $meal) }}"style="text-decoration:none; color:#eb640a;"><b>Edit</b></a></li>
-            {{-- <li><a href="{{ route('restaurants.delete', $restaurant->id) }}" style="text-decoration:none; color:#eb640a;"><b>Delete</b></a></li> --}}
-            <li><a href="{{ route('meals.create') }}"style="text-decoration:none; color:#eb640a;"><b>Create New Meal</b></a></li>
-            {{-- <li><a href="{{route('mealorder.show', $meal->id)}}"style="text-decoration:none; color:#eb640a;"><b>Add To Order</b></a></li> --}}
-               <li><a href="{{route('res-order.createorder', $meal->id)}}"style="text-decoration:none; color:#eb640a;"><b>Add To Order</b></a></li>
+            <li><a href="{{ route('meals.edit', $meal) }}"style="text-decoration:none; color:orange;"><b>Edit</b></a></li>
+            {{-- <li><a href="{{ route('restaurants.delete', $restaurant->id) }}" style="text-decoration:none; color:orange;"><b>Delete</b></a></li> --}}
+            <li><a href="{{ route('meals.create') }}"style="text-decoration:none; color:orange;"><b>Create New Meal</b></a></li>
+            {{-- <li><a href="{{route('mealorder.show', $meal->id)}}"style="text-decoration:none; color:orange;"><b>Add To Order</b></a></li> --}}
+               <li><a href="{{route('res-order.createorder', $meal->id)}}"style="text-decoration:none; color:orange;"><b>Add To Order</b></a></li>
 
-            <li><a href="#"style="text-decoration:none; color:#eb640a;"><b>Order more</b></a></li>
-            <li><a href="{{ route('meals.index') }}"style="text-decoration:none; color:#eb640a;"><b>Show Meal in same category</b></a></li>
+            <li><a href="#"style="text-decoration:none; color:orange;"><b>Order more</b></a></li>
+            <li><a href="{{ route('meals.index') }}"style="text-decoration:none; color:orange;"><b>Show Meal in same category</b></a></li>
           </ul>
         </div>
       </nav>
