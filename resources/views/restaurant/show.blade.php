@@ -438,6 +438,6 @@
     <img src="{{asset('images/loader.gif')}}" alt="">
 </div> --}}
 <!-- custom js file link  -->
-{{-- <script src="{{asset('js\script.js')}}"></script> --}}
+<script src="{{asset('js\script.js')}}"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@
   {{ $slot }}
   <x-footer />
   {{ $scripts ?? '' }}
-
+  <a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
   <script src="{{asset('js\script.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
   <script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
