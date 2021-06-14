@@ -9,6 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\ExportReportController;
 use App\Http\Controllers\MealOrderController;
 use App\Http\Controllers\RestaurantController;
 
@@ -36,6 +37,8 @@ Route::get('/category',[CategoryController::class,'search'])->name('categories.s
 Route::get('/meal',[MealController::class,'search'])->name('meals.search');
 
 Route::get("/chart", [ChartController::class,'Chart'])->name('chart');
+Route::get('importExportView', [ExportReportController::class, 'importExportView']);
+Route::get('export', [ExportReportController::class, 'export'])->name('export');
 
 // Route::get('/order/{id}',[OrderController::class,'order'])->name('res-order.order');;
 
