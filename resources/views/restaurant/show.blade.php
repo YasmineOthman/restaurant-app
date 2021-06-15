@@ -84,7 +84,6 @@
         <a class="nav-link active" aria-current="page" href="/" style="color: orange">Home</a>
         {{-- <a href="#speciality" style="color:orange">Restaurants</a> --}}
         <a class="nav-link active" href="{{route('restaurants.index')}}" style="color: orange">Restaurants</a>
-        <a class="nav-link active" href="#footer" style="color: orange">Contact us</a>
         {{-- <a href="#popular" style="color:orange">Contact us</a> --}}
         {{-- <a href="#gallery" style="color:orange">Account</a> --}}
          <a class="nav-link  active" href="{{route('categories.index')}}" style="color:orange">
@@ -94,8 +93,9 @@
           <li><a class="dropdown-item" href="#" style="color: orange">Sign in</a></li>
         </ul> --}}
         </a>
-        <a href="#review" style="color:orange">language</a>
+        <a href="#popular" style="color:orange">tables</a>
         <a href="{{route('res-order.createorder',$restaurant->id)}}" style="color:orange">order</a>
+        <a class="nav-link active" href="#footer" style="color: orange">Contact us</a>
 
     </nav>
 
@@ -111,11 +111,11 @@
         <h3>{{$restaurant->name}} Restaurant</h3>
         <p>{!! $restaurant->description !!}</p>
         <a href="login" class="btn btn-dark" style="color:black" role=button>Get Order</a>
-
       </div>
     <div class="image">
         {{-- <img src="{{asset('images/home-img.png')}}" alt=""> --}}
-        <img src="{{ $restaurant-> image }}" >
+        {{-- <img src="restaurant-images\{{$restaurant->image}}" > --}}
+        <img src="restaurant-images\http://127.0.0.1:8000/storage/restaurant-images/MKBqh4d9tQMrJaECbKa9I9Bd6VTGpMffVIvtscn7.jpg">
     </div>
 </section>
 <!-- home section ends -->
@@ -139,24 +139,27 @@
 
 <section class="popular" id="popular">
 
-    <h1 class="heading" style="color:orange"> most <span>popular</span> foods </h1>
+    <h1 class="heading" style="color:orange"><span>our</span> tables </h1>
 
     <div class="box-container">
-
+      @foreach ($restaurant->tables as $table)
+      @if($table->status == 0)
         <div class="box">
-            <span class="price"> $5 - $20 </span>
+            <span class="price"> {{$table->chairs_count}} </span>
             <img src="images/p-1.jpg" alt="">
-            <h3>tasty burger</h3>
-            <div class="stars">
+            <h3>{{ $table->place_table }}</h3>
+            {{-- <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
-            </div>
-            <a href="" class="btn">order now</a>
+            </div> --}}
+            <a href="" class="btn">reserve now</a>
         </div>
-        <div class="box">
+        @endif
+        @endforeach
+        {{-- <div class="box">
             <span class="price"> $5 - $20 </span>
             <img src="images/p-2.jpg" alt="">
             <h3>tasty cakes</h3>
@@ -168,8 +171,8 @@
                 <i class="far fa-star"></i>
             </div>
             <a href="https://tech-code24.net" class="btn">order now</a>
-        </div>
-        <div class="box">
+        </div> --}}
+        {{-- <div class="box">
             <span class="price"> $5 - $20 </span>
             <img src="images/p-3.jpg" alt="">
             <h3>tasty sweets</h3>
@@ -179,8 +182,8 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
-            </div>
-            <a href="https://tech-code24.net" class="btn">order now</a>
+            </div> --}}
+            {{-- <a href="https://tech-code24.net" class="btn">order now</a>
         </div>
         <div class="box">
             <span class="price"> $5 - $20 </span>
@@ -193,8 +196,8 @@
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
             </div>
-            <a href="https://tech-code24.net" class="btn">order now</a>
-        </div>
+            <a href="https://tech-code24.net" class="btn">order now</a> --}}
+        {{-- </div>
         <div class="box">
             <span class="price"> $5 - $20 </span>
             <img src="images/p-5.jpg" alt="">
@@ -218,9 +221,9 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
-            </div>
-            <a href="https://tech-code24.net" class="btn">order now</a>
-        </div>
+            {{-- </div> --}}
+            {{-- <a href="https://tech-code24.net" class="btn">order now</a> --}}
+        {{-- </div> --}}
 
     </div>
 

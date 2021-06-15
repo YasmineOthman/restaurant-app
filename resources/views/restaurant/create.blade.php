@@ -15,7 +15,6 @@
     <form action=" {{route('restaurants.store')}}" method="POST" enctype="multipart/form-data">
       @csrf
         <div class="field">
-
         <label class="label form"> Restaurant Name</label>
         <div class="control">
           <input class="input @error('name')is-danger @enderror is-normal" name="name" type="text" value="{{ old('name') }}" placeholder="Enter Restaurant Name">
@@ -42,11 +41,20 @@
           <p class="help is-danger">{{ $message }}</p>
         @enderror
       </div>
+      <div class="field">
+        <label class="label form"> Count Of Tables</label>
+        <div class="control">
+          <input class="input @error('tables_count')is-danger @enderror is-normal" name="tables_count" type="number" min="0" value="{{ old('tables_count') }}" placeholder="Enter Count Of Tables">
+        </div>
+        @error('tables_count')
+          <p class="help is-danger">{{ $message }}</p>
+        @enderror
+      </div>
 
       <div class="field">
         <label class="label form">Description</label>
         <div class="control">
-          <textarea class="ckeditor textarea @error('description')is-danger @enderror is-small" name="description" placeholder="descripe your restaurant..">{{ old('description') }}</textarea>
+          <textarea class="ckeditor textarea @error('description')is-danger @enderror is-small" name="description" placeholder="Descripe your restaurant..">{{ old('description') }}</textarea>
           <script type="text/javascript">
             CKEDITOR.replace( 'content' );
           </script>

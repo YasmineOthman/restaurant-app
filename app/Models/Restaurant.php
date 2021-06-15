@@ -12,6 +12,10 @@ class Restaurant extends Model
     {
         return $this->hasMany(Category::class);
     }
+    public function tables()
+    {
+        return $this->hasMany(Table::class);
+    }
     public function ratings()
     {
         return $this->belongsToMany(Rating::class);
