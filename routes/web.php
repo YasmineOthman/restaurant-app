@@ -39,6 +39,8 @@ Route::get('/meal',[MealController::class,'search'])->name('meals.search');
 Route::get("/chart", [ChartController::class,'Chart'])->name('chart');
 Route::get('importExportView', [ExportReportController::class, 'importExportView']);
 Route::get('export', [ExportReportController::class, 'export'])->name('export');
+Route::get('/RestaurantByIPLocation', [RestaurantController::class,'Getlocation'])->name ('getbyip');
+
 
 // Route::get('/order/{id}',[OrderController::class,'order'])->name('res-order.order');;
 

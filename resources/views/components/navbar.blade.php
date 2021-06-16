@@ -44,12 +44,17 @@
                 <li  name="search" class="dropdown-item" style="color: #eb640a">address</li>
                 <li name="search"class="dropdown-item" style="color: #eb640a">city</li>
 
+
+
             </ul>
         </li> --}}
         {{-- <select  name="search" value="{{ old('search ') }}">
           <option value="name" style="color: #eb640a; ">name</option>
           <option value="address" style="color: #eb640a">address</option>
           <option value="city" style="color: #eb640a">city</option>
+          <option value="city" style="color: #eb640a">Myaddress</option>
+
+
         </select> --}}
         {{-- <input list="search" value="{{ old('search ') }}"> --}}
         <li class="nav-item dropdown">
@@ -58,12 +63,16 @@
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
         <input type="radio" name="search" value="name"> name<br>
         <input type="radio" name="search" value="address"> address<br>
-        <input type="radio" name="search" value="city"> city
+        <input type="radio" name="search" value="city"> city <br>
+
         </ul>
         </li>
         <button class="btn btn-success" type="submit">Search</button>
 
         </form>
+        <li class="nav-item ">
+        <a class="nav-link active" aria-current="page" href="{{route('getbyip')}}" style="color: #eb640a">Get Restaurant by user location </a>
+          </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #eb640a">
               Language
