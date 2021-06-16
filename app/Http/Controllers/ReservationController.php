@@ -28,11 +28,12 @@ class ReservationController extends Controller
     {
         //
     }
-    public function createreservation($id)
+    public function createreservation($id,$idd)
     {
         $restaurant = Restaurant::findOrFail($id);
-        $tables = Table::all();
-        return view ('reservation.create',['restaurant'=>$restaurant,'tables'=>$tables]);
+        // $tables = Table::all();
+        $table = Table::findOrFail($idd);
+        return view ('reservation.create',['restaurant'=>$restaurant,'table'=>$table]);
     }
 
     /**
@@ -43,7 +44,19 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->tableid);
+        $request->validate([
+            'start_time'                     => 'required|date|max:255',
+            'end_time'                       => 'required|date|max:255'
+            // 'meals'                     => 'array'
+        ]);
+        $reservation = new Reservation();
+        $reservation->start_time = $request->start_time;
+        $reservation->end_time = $request->end_time;
+        $reservation->user_id = 1;
+        $reservation->restaurant_id =$request->restaurantid;
+        $reservation->slug = Str::slug($request->place, '-');
+        $reservation->save();
     }
 
     /**

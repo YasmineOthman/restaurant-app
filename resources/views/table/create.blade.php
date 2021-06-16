@@ -4,7 +4,7 @@
 <div class="container">
     <div class="title is-2 form">Create Your Table</div>
     {{-- @for($i = 0;$i< $restaurant->tables_count;$i++) --}}
-    <form action=" {{route('res-table.storetable')}}" method="POST" enctype="multipart/form-data">
+    <form action=" {{route('tables.store')}}" method="POST" >
       @csrf
       <input type="number" name="restaurantid" value="{{$restaurant->id}}" hidden>
       {{-- @for($i = 0;$i< $restaurant->tables_count;$i++) --}}

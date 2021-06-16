@@ -42,31 +42,24 @@ class TableController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-        //
-    }
-    public function storetable(Request $request)
+    // public function store(Request $request){
+    //     //
+    // }
+    public function store(Request $request)
     {
-        // dd("done");
-        // dd($request->restaurantid);
         $restaurant = Restaurant::findOrFail($request->restaurantid);
-        // for($i = 0;$i< $restaurant->tables_count;$i++){
         $request->validate([
             'place'                     => 'required|min:4|max:255',
             'chairs_count'              => 'required|numeric|min:0',
             'status'                    =>'required'
         ]);
-        // dd($restaurant->tables_count);
         $table = new Table();
         $table->place_table = $request->place;
         $table->chairs_count = $request->chairs_count;
         $table->status = $request->status;
-        // $table->start_time =
         $table->restaurant_id = $request->restaurantid;
         // $table->slug = Str::slug($request->place, '-');
-
         $table->save();
-        // }
         return view('restaurant.show',['restaurant' => $restaurant]);
     }
 

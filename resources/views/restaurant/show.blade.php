@@ -103,9 +103,7 @@
         <a href="login" class="btn btn-dark" style="color:black" role=button>Get Order</a>
       </div>
     <div class="image">
-        {{-- <img src="{{asset('images/home-img.png')}}" alt=""> --}}
-        {{-- <img src="restaurant-images\{{$restaurant->image}}" > --}}
-        <img src="storage/restaurant-images/{{$restaurant->image}}">
+        <img src="{{asset("storage/$restaurant->image")}}">
     </div>
 </section>
 <!-- home section ends -->
@@ -155,7 +153,7 @@
             <span class="price"> {{$table->chairs_count}} chairs </span>
             <img src="images/p-1.jpg" alt="">
             <h3>{{ $table->place_table }}</h3>
-            <a href="{{route('res-reservation.createreservation',$restaurant->id)}}" class="btn">reserve now</a>
+            <a href="{{route('res-reservation.createreservation',$restaurant->id,$table->id)}}" class="btn">reserve now</a>
         </div>
         @endif
         @endforeach

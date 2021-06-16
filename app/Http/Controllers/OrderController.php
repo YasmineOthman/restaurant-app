@@ -36,10 +36,6 @@ class OrderController extends Controller
         $restaurant = Restaurant::findOrFail($id);
         $categories = Category ::all();
         $meals = Meal::all();
-        // $mealorder = MealOrder::all();
-        // $restaurants = Restaurant::all();
-        // $restaurant = Restaurant::where('restaurant_id' , '=' , $id)->get();
-        // $meals = Meal::where($category->restaurant_id , '=' , $id)->get();
         return view ('order.create',['meals'=>$meals,'restaurant'=>$restaurant,'categories'=>$categories]);
 
     }

@@ -5,6 +5,7 @@
     <div class="title is-2 form">Reserve your table from {{$restaurant->name}} restaurant</div>
     <form action=" " method="POST" >
       @csrf
+
         <div class="field">
         <label class="label form"> FROM:</label>
         <div class="control">
