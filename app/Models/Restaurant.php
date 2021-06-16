@@ -20,6 +20,10 @@ class Restaurant extends Model
     {
         return $this->belongsToMany(Rating::class);
     }
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
     public function getRouteKeyName()
     {
         return 'slug';
