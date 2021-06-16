@@ -6,6 +6,8 @@ use App\Models\Table;
 use App\Models\Restaurant;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Stevebauman\Location\Facades\Location;
+
 
 class RestaurantController extends Controller
 {
@@ -39,6 +41,7 @@ class RestaurantController extends Controller
              $restaurants = Restaurant:: where('address', 'like', '%'.$name.'%')->get();
              return view('restaurant.index', ['restaurants' => $restaurants]);
              }
+          
     }
     /**
      * Show the form for creating a new resource.
@@ -163,4 +166,21 @@ class RestaurantController extends Controller
     {
         //
     }
+
+    function Getlocation () {
+        //request()->ip();
+        //5.0.255.255
+        //31.193.79.255
+        //static ip for now ..
+        $ip ='5.0.255.255';
+        $data = Location::get($ip);
+       //dd($data);
+            $restaurants = Restaurant:: where('city', 'like', '%'.$data->regionName.'%')->orwhere('address', 'like', '%'.$data->cityName.'%')->get();
+            return view('restaurant.index', ['restaurants' => $restaurants]);
+          
+      // dd($restaurants);
+        //echo $data->cityName;
+       
+       
+}
 }

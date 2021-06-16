@@ -38,18 +38,37 @@
         <form class="d-flex" action="{{ route('restaurants.search') }}" method="GET">
           <input name="name" id="search"class="form-control me-2" type="search" placeholder="Enter name,city or address of Restaurant" aria-label="Search" style="border-color:orange">
 
+
+
+
+            </ul>
+        </li> --}}
+        {{-- <select  name="search" value="{{ old('search ') }}">
+          <option value="name" style="color: #eb640a; ">name</option>
+          <option value="address" style="color: #eb640a">address</option>
+          <option value="city" style="color: #eb640a">city</option>
+         
+
+
+        </select> --}}
+        {{-- <input list="search" value="{{ old('search ') }}"> --}}
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">
         by</a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
         <input type="radio" name="search" value="name"> name<br>
         <input type="radio" name="search" value="address"> address<br>
-        <input type="radio" name="search" value="city"> city
+        <input type="radio" name="search" value="city"> city <br>
+
         </ul>
         </li>
         <button class="btn btn-success" type="submit">Search</button>
 
         </form>
+        <li class="nav-item ">
+        <a class="nav-link active" aria-current="page" href="{{route('getbyip')}}" style="color: #eb640a">Get Restaurant by user location </a>
+          </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">
               Language
