@@ -86,27 +86,17 @@
         <a class="nav-link active" href="{{route('restaurants.index')}}" style="color: orange">Restaurants</a>
         {{-- <a href="#popular" style="color:orange">Contact us</a> --}}
         {{-- <a href="#gallery" style="color:orange">Account</a> --}}
-         <a class="nav-link  active" href="{{route('categories.index')}}" style="color:orange">
+         <a class="nav-link  active" href="{{route('categories.create')}}" style="color:orange">
           Categories
-        {{-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="#" style="color: orange">Log in</a></li>
-          <li><a class="dropdown-item" href="#" style="color: orange">Sign in</a></li>
-        </ul> --}}
         </a>
         <a href="#popular" style="color:orange">tables</a>
         <a href="{{route('res-order.createorder',$restaurant->id)}}" style="color:orange">order</a>
         <a class="nav-link active" href="#footer" style="color: orange">Contact us</a>
-
     </nav>
-
 </header>
-
 <!-- header section ends -->
-
 <!-- home section starts  -->
-
 <section class="home" id="home" style="background-color:orange">
-
     <div class="content">
         <h3>{{$restaurant->name}} Restaurant</h3>
         <p>{!! $restaurant->description !!}</p>
@@ -115,14 +105,14 @@
     <div class="image">
         {{-- <img src="{{asset('images/home-img.png')}}" alt=""> --}}
         {{-- <img src="restaurant-images\{{$restaurant->image}}" > --}}
-        <img src="restaurant-images\http://127.0.0.1:8000/storage/restaurant-images/MKBqh4d9tQMrJaECbKa9I9Bd6VTGpMffVIvtscn7.jpg">
+        <img src="storage/restaurant-images/{{$restaurant->image}}">
     </div>
 </section>
 <!-- home section ends -->
 <!-- speciality section starts  -->
 <section class="speciality" id="speciality">
     <h1 class="heading" style="color:orange"> our <span>Categories</span> </h1>
-         <div class="container-fluid padding ">
+         {{-- <div class="container-fluid padding ">
           <div class="row padding text-center" >
             @foreach ($restaurant->categories as $category)
          <div class="col-md-4 col-sm-12 col-lg-3" style="display: inline-block">
@@ -131,7 +121,24 @@
            <img src="{{ $category->image }}" class="card-img-top cardImage" alt="..."></a>
         </div></div>
         @endforeach
-         </div></div>
+         </div></div> --}}
+         <div class="box-container">
+          @foreach ($restaurant->categories as $category)
+        <div class="box">
+          <img class="image" src="{{asset('images/s-img-1.jpg')}}" alt="">
+          <div class="content" style="background-color:black;">
+            @if($category->type == "meat")
+              <img src="{{asset('images/s-1.png')}}" alt="">
+            @endif
+            @if($category->type == "Pizza")
+            <img src="{{asset('images/s-2.png')}}" alt="">
+          @endif
+              <h3 style="color:orange;">{{$category->type}}</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur voluptates aperiam tempore libero labore aut.</p>
+          </div>
+      </div>
+      @endforeach
+         </div>
         </section>
 <!-- speciality section ends -->
 
@@ -145,7 +152,7 @@
       @foreach ($restaurant->tables as $table)
       @if($table->status == 0)
         <div class="box">
-            <span class="price"> {{$table->chairs_count}} </span>
+            <span class="price"> {{$table->chairs_count}} chairs </span>
             <img src="images/p-1.jpg" alt="">
             <h3>{{ $table->place_table }}</h3>
             {{-- <div class="stars">
