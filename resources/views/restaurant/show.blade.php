@@ -155,14 +155,7 @@
             <span class="price"> {{$table->chairs_count}} chairs </span>
             <img src="images/p-1.jpg" alt="">
             <h3>{{ $table->place_table }}</h3>
-            {{-- <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-            </div> --}}
-            <a href="" class="btn">reserve now</a>
+            <a href="{{route('res-reservation.createreservation',$restaurant->id)}}" class="btn">reserve now</a>
         </div>
         @endif
         @endforeach
@@ -242,26 +235,32 @@
 
 <div class="step-container">
 
-    <h1 class="heading" style="color:orange">how it <span>works</span></h1>
+    <h1 class="heading" style="color:orange">our <span>services</span></h1>
 
     <section class="steps">
 
         <div class="box">
-            <img src="images/step-1.jpg" alt="">
+          <a href="{{route('categories.index')}}">
+            <img src="{{asset('images/step-1.jpg')}}" alt="">
             <h3 style="color:orange">choose your favorite food</h3>
+          </a>
         </div>
         <div class="box">
-            <img src="images/step-2.jpg" alt="">
-            <h3 style="color:orange">free and fast delivery</h3>
+          <a href="{{route('res-order.createorder',$restaurant->id)}}">
+            <img src="{{asset('images/step-2.jpg')}}" alt="">
+            <h3 style="color:orange">online order and delivery</h3>
+          </a>
         </div>
         <div class="box">
-            <img src="images/step-3.jpg" alt="">
-            <h3 style="color:orange">easy payments methods</h3>
+          <a href="{{route('res-reservation.createreservation',$restaurant->id)}}">
+            <img src="{{asset('images/step-4.jpg')}}" alt="">
+            <h3 style="color:orange">reserve your table</h3>
+          </a>
         </div>
-        <div class="box">
-            <img src="images/step-4.jpg" alt="">
+        {{-- <div class="box">
+            <img src="{{asset('images/step-4.jpg')}}" alt="">
             <h3 style="color:orange">and finally, enjoy your food</h3>
-        </div>
+        </div> --}}
 
     </section>
 
