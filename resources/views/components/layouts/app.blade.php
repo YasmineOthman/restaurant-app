@@ -8,12 +8,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{{$styles ?? ''}}
   </head>
   <body>
-  {{-- <x-navbar /> --}}
+
   {{ $slot }}
   <x-footer />
   {{ $scripts ?? '' }}
+  <a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
+  <script src="{{asset('js\script.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
   <script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
   <script>
@@ -30,30 +34,6 @@
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
  <script>
-    // $('.js-go-night').click(function(){
-    //   // alert('Go to night mode - replace me with the CSS changing code!');
-    //   $('body').addClass('night');
-    //   $('div').addClass('night');
-    //   $('li').addClass('night');
-    //   $('form').addClass('night');
-    //   $('label').addClass('night');
-    //   $('button').addClass('night');
-    //   $('section').addClass('night');
-    //   $('.hero-body').addClass('night');
-    //   $('h1').addClass('night');
-    // });
-    // $('.js-go-day').click(function(){
-    //   // alert('Go to day mode - replace me with the CSS changing code!');
-    //   $('body').removeClass('night');
-    //   $('div').removeClass('night');
-    //   $('li').removeClass('night');
-    //   $('form').removeClass('night');
-    //   $('label').removeClass('night');
-    //   $('button').removeClass('night');
-    //   $('section').removeClass('night');
-    //   $('.hero-body').removeClass('night');
-    //   $('h1').removeClass('night');
-    // });
   function addDarkmodeWidget() {
     new Darkmode().showWidget();
   }
@@ -74,5 +54,7 @@
 const darkmode = new Darkmode(options);
 darkmode.showWidget();
 </script>
+
+
 </body>
 </html>

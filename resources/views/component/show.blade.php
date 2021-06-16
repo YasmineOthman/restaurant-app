@@ -1,6 +1,6 @@
 <x-layouts.app>
   <section class="hero is-success is-small">
-    <div class="hero-body" style="background-color: #eb640a;">
+    <div class="hero-body" style="background-color: orange;">
       <div class="container has-text-centered" >
         <p class="title">
           <h1 style="color:black;">hello
@@ -13,11 +13,11 @@
       <nav class="tabs is-boxed is-fullwidth">
         <div class="container">
           <ul>
-            <li><a href="{{ route('components.edit', $component) }}"style="text-decoration:none; color:#eb640a;"><b>Edit</b></a></li>
-            {{-- <li><a href="{{ route('restaurants.delete', $restaurant->id) }}" style="text-decoration:none; color:#eb640a;"><b>Delete</b></a></li> --}}
-            {{-- <li><a href="{{ route('components.create') }}"style="text-decoration:none; color:#eb640a;"><b>Create New Component</b></a></li> --}}
-            {{-- <li><a href="{{ route('categories.show', $post->category) }}"style="text-decoration:none; color:#eb640a;"><b>Show related Posts</b></a></li> --}}
-            {{-- <li><a href="{{ route('meals.create' )}}"style="text-decoration:none; color:#eb640a;">
+            <li><a href="{{ route('components.edit', $component) }}"style="text-decoration:none; color:orange;"><b>Edit</b></a></li>
+            {{-- <li><a href="{{ route('restaurants.delete', $restaurant->id) }}" style="text-decoration:none; color:orange;"><b>Delete</b></a></li> --}}
+            {{-- <li><a href="{{ route('components.create') }}"style="text-decoration:none; color:orange;"><b>Create New Component</b></a></li> --}}
+            {{-- <li><a href="{{ route('categories.show', $post->category) }}"style="text-decoration:none; color:orange;"><b>Show related Posts</b></a></li> --}}
+            {{-- <li><a href="{{ route('meals.create' )}}"style="text-decoration:none; color:orange;">
               <b>Create Meal</b></a></li> --}}
           {{-- </ul> --}}
         {{-- </div> --}}

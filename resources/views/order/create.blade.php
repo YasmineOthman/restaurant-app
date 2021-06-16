@@ -1,4 +1,5 @@
 <x-layouts.app>
+  <x-navbar/>
 <section class="section">
 <div class="container">
   <div class="title is-2 form">Make Your Order from {{$restaurant->name}} Restaurant</div>

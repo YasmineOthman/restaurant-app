@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Table;
 use App\Models\Restaurant;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Stevebauman\Location\Facades\Location;
+
 
 class RestaurantController extends Controller
 {
@@ -66,7 +68,10 @@ class RestaurantController extends Controller
             'city'                     => 'required|min:4',
             'address'                  => 'required|min:4',
             'description'              => 'required|min:4',
-            'image'                    => 'required|file|image'
+            'image'                    => 'required|file|image',
+            'tables_count'             => 'required|numeric|min:0'
+            // 'table_id'                 => 'required|numeric|exists:restaurants,id',
+
         ]);
         $restaurant = new Restaurant();
         $restaurant->name = $request->name;
@@ -78,8 +83,15 @@ class RestaurantController extends Controller
         $restaurant->address = $request->address;
         $restaurant->description= $request->description;
         $restaurant->slug = Str::slug($request->name, '-');
+        $restaurant->tables_count = $request->tables_count;
         $restaurant->save();
-        return redirect()->route('restaurants.show', $restaurant);
+        // return redirect()->route('restaurants.show', $restaurant);
+        // return redirect()->back();
+
+    //   dd($restaurant->tables_count);
+        return redirect()->route('res-table.createtable', $restaurant->id);
+        // return view('table.create', ['restaurant' => $restaurant]);
+
 
 
     }
@@ -92,7 +104,13 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        return view('restaurant.show', ['restaurant' => $restaurant]);
+        $tables = Table::all();
+        // dd($restaurant->id);
+        // $tables = Table::where('restaurant_id' , '=' , $restaurant->id)->get();
+        // foreach($tables as $table){
+        //        dd($table->id);
+        // }
+        return view('restaurant.show', ['restaurant' => $restaurant,'tables' => $tables]);
     }
 
     /**

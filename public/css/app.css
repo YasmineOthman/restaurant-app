@@ -11,16 +11,16 @@ html,body{
 width:100%;
 /* margin-bottom: 20px; */
 }
-.category-image{
+/* .category-image{
     width:100px;
     height: 100px;
-}
+} */
 .form{
-    color:#eb640a;
+    color:orange;
 
 }
 .form-button{
-background-color:#eb640a ;
+background-color:orange ;
 color: #000;
 margin-bottom: 20px;
 width: 100px;
@@ -35,25 +35,26 @@ font-weight: bold;
 }
 .btn-primary,.btn-primary:hover{
    background-color: #000;
-   color:#eb640a ;
+   color:orange;
 }
 .btn-primary:hover{
    border-radius: 50%;
 }
 .dropdown-menu{
-    color:#eb640a ;
+    /* color:#eb640a ; */
+    color:orange ;
     background-color: #000;
 }
 .dropdown-menu:hover{
     color:#000 ;
-    background-color: #eb640a;
+    background-color: orange;
 }
 
 /* .btn-success:hover{
    border-radius: 50%; */
 /* } */
 .btn-success,.btn-success:hover{
-   background-color: #eb640a;
+   background-color: orange;
    color:#000 ;
 }
 .navbar-nav a{
@@ -64,17 +65,20 @@ font-weight: bold;
 }
 footer{
    background-color: #000;
-   color:  #eb640a;
+   color:  orange;
    text-align: center;
    height: 5%;
     display: block;
     width: 100%;
-    border-top: 1px solid  #eb640a ;
+    border-top: 1px solid  orange ;
     position: fixed;
     bottom:0;
 }
+
+
+
 .hero-body{
-    background-color: #eb640a;
+    background-color: orange;
 }
 h1{
     color:#000;
@@ -90,7 +94,7 @@ h1{
  .darkmode--activated li,
  .darkmode--activated h3{
  /* .darkmode--activated h1 { */
-    color: #eb640a;
+    color: orange;
 
   }
   /* .darkmode--activated .hero-body{
@@ -106,4 +110,17 @@ h1{
   input{
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
+  .logo{
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color:#666;
+  }
+
+   .logo i{
+    padding-right: .5rem;
+    color:var(--red);
+  }
+
+
+
 
