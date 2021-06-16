@@ -12,4 +12,8 @@ class Table extends Model
     {
         return $this->belongsTo(Restaurant::class);
     }
+    public function reservation()
+    {
+        return $this->belongsTo(Reservation::class);
+    }
 }

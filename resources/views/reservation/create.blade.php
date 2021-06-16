@@ -3,9 +3,9 @@
 <section class="section">
 <div class="container">
     <div class="title is-2 form">Reserve your table from {{$restaurant->name}} restaurant</div>
-    <form action=" " method="POST" >
+    <form action="{{route('reservations.store')}} " method="POST" >
       @csrf
-
+      <input type="number" name="restaurantid" value="{{$restaurant->id}}" hidden>
         <div class="field">
         <label class="label form"> FROM:</label>
         <div class="control">
@@ -24,9 +24,7 @@
           <p class="help is-danger">{{ $message }}</p>
         @enderror
       </div>
-
       <div class="field">
-
         <div class="control" id="table">
           <label class="label form">Available Tables</label>
           @foreach ($restaurant->tables as $table)

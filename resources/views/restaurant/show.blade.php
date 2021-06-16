@@ -101,6 +101,7 @@
         <h3>{{$restaurant->name}} Restaurant</h3>
         <p>{!! $restaurant->description !!}</p>
         <a href="login" class="btn btn-dark" style="color:black" role=button>Get Order</a>
+        <a href="{{route('res-table.createtable', $restaurant->id)}}" class="btn btn-dark" style="color:black" role=button>add table</a>
       </div>
     <div class="image">
         <img src="{{asset("storage/$restaurant->image")}}">
