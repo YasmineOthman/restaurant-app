@@ -28,12 +28,11 @@ class ReservationController extends Controller
     {
         //
     }
-    public function createreservation($id,$idd)
+    public function createreservation($id)
     {
         $restaurant = Restaurant::findOrFail($id);
-        // $tables = Table::all();
-        $table = Table::findOrFail($idd);
-        return view ('reservation.create',['restaurant'=>$restaurant,'table'=>$table]);
+        $tables = Table::all();
+        return view ('reservation.create',['restaurant'=>$restaurant,'tables'=>$tables]);
     }
 
     /**
@@ -44,19 +43,25 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->tableid);
+        // dd("here");
         $request->validate([
-            'start_time'                     => 'required|date|max:255',
-            'end_time'                       => 'required|date|max:255'
+            'start_time'                     => 'required|date',
+            'end_time'                       => 'required|date'
             // 'meals'                     => 'array'
         ]);
-        $reservation = new Reservation();
-        $reservation->start_time = $request->start_time;
-        $reservation->end_time = $request->end_time;
-        $reservation->user_id = 1;
-        $reservation->restaurant_id =$request->restaurantid;
-        $reservation->slug = Str::slug($request->place, '-');
-        $reservation->save();
+        foreach($request->tables as $table){
+            $reservation = new Reservation();
+            $reservation->table=$table;
+            $reservation->start_time = $request->start_time;
+            $reservation->end_time = $request->end_time;
+            $reservation->user_id = 1;
+            $reservation->restaurant_id =$request->restaurantid;
+            // $reservation->slug = Str::slug($request->place, '-');
+            // dd($request->tables);
+            $reservation->save();
+            // dd("here again");
+        }
+        echo "<script>confirm('done');</script>";
     }
 
     /**

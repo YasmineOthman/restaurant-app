@@ -64,23 +64,20 @@ class OrderController extends Controller
         $order->slug = Str::slug($request->place, '-');
         $order->save();
         $sum = 0;
-        // foreach ($request->meals as $meal){
-        // $order->meals()->sync($request->meals);
-        // //  $request->{"quantity".$meal};
-        // $sum = ($meal->price * $request->{"quantity".$meal}) + $sum;
-        // }
         foreach($request->meals as $meal){
             $mealorder = new MealOrder();
             $mealorder->meal_id=$meal;
             $mealorder->quantity=$request->{"quantity".$meal};
             $mealorder->order_id=$order->id;
-        // ($request->{"price".$meal});
             $mealorder->save();
             $sum = ($request->{"price".$meal} * $mealorder->quantity) + $sum;
         }
-        // dd($sum);
-        // $sum = 0;
         echo "<script>confirm('Cost is $sum');</script>";
+         // foreach ($request->meals as $meal){
+        // $order->meals()->sync($request->meals);
+        // //  $request->{"quantity".$meal};
+        // $sum = ($meal->price * $request->{"quantity".$meal}) + $sum;
+        // }
         // foreach ($order->meals as $meal){
         //  dd($request->quantity);
         //   $sum = ($meal->price * $request->quantity) + $sum;
