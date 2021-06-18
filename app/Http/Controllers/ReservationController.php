@@ -45,15 +45,18 @@ class ReservationController extends Controller
     {
         // dd("here");
         $request->validate([
-            'start_time'                     => 'required|date',
-            'end_time'                       => 'required|date'
-            // 'meals'                     => 'array'
+            'day'                     => 'required|date|after:yesterday',
+            // 'time'                    => 'date|after:today|after:day - 1|before:tomorrow + 1',
+            'time'         =>'date_format:H:i',
+            'tables'                  => 'required'
         ]);
         foreach($request->tables as $table){
             $reservation = new Reservation();
             $reservation->table=$table;
-            $reservation->start_time = $request->start_time;
-            $reservation->end_time = $request->end_time;
+            $reservation->day = $request->day;
+            // $reservation->time = $request->time;
+            $reservation->time = date("h:i A",strtotime( $request->time ));
+            // dd($reservation->time);
             $reservation->user_id = 1;
             $reservation->restaurant_id =$request->restaurantid;
             // $reservation->slug = Str::slug($request->place, '-');

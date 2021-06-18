@@ -7,20 +7,20 @@
       @csrf
       <input type="number" name="restaurantid" value="{{$restaurant->id}}" hidden>
         <div class="field">
-        <label class="label form"> FROM:</label>
+        <label class="label form"> Day:</label>
         <div class="control">
-          <input class="input @error('start_time')is-danger @enderror is-normal" name="start_time" type="date" value="{{ old('start_time') }}" placeholder="" min="" max="">
+          <input  class="input @error('day')is-danger @enderror is-normal" name="day" type="date"  value="{{ old('day') }}" placeholder="" min="" max="">
         </div>
-        @error('start_time')
+        @error('day')
           <p class="help is-danger">{{ $message }}</p>
         @enderror
       </div>
       <div class="field">
-        <label class="label form"> TO</label>
+        <label class="label form"> Time:</label>
         <div class="control">
-          <input class="input @error('end_time')is-danger @enderror is-normal" name="end_time" type="date" value="{{ old('end_time') }}" placeholder="">
+          <input class="input @error('time')is-danger @enderror is-normal" name="time" type="time" value="{{ old('time') }}" placeholder="">
         </div>
-        @error('end_time')
+        @error('time')
           <p class="help is-danger">{{ $message }}</p>
         @enderror
       </div>
