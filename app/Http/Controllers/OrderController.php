@@ -7,8 +7,11 @@ use App\Models\Order;
 use App\Models\Category;
 use App\Models\MealOrder;
 use App\Models\Restaurant;
+use App\Models\Sale;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class OrderController extends Controller
 {
@@ -70,6 +73,14 @@ class OrderController extends Controller
             $mealorder->quantity=$request->{"quantity".$meal};
             $mealorder->order_id=$order->id;
             $mealorder->save();
+            $is_sale=Sale::where('meals_id',$mealorder->meal_id)->where('End_date', '>=', Carbon::now()->toDateString())->get();
+         
+            //dd($is_sale);
+            if ($is_sale->count()>0){
+                $sum = (($request->{"price".$meal} - ($is_sale[0]->discount/100 * ($request->{"price".$meal} )) )* $mealorder->quantity) + $sum;
+
+            }
+            else 
             $sum = ($request->{"price".$meal} * $mealorder->quantity) + $sum;
         }
         echo "<script>confirm('Cost is $sum');</script>";
