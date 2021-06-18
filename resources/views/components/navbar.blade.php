@@ -47,7 +47,7 @@
           <option value="name" style="color: #eb640a; ">name</option>
           <option value="address" style="color: #eb640a">address</option>
           <option value="city" style="color: #eb640a">city</option>
-         
+
 
 
         </select> --}}
@@ -74,8 +74,9 @@
               Language
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#" style="color:orange">Arabic</a></li>
-                <li><a class="dropdown-item" href="#" style="color:orange">English</a></li>
+
+                <li><a class="dropdown-item" href="{{ route('locale.toggle', App::getLocale() == 'ar' ? 'en': 'ar') }}" style="color:orange">Arabic</a></li>
+                <li><a class="dropdown-item" href="{{ route('locale.toggle', App::getLocale() == 'ar' ? 'en': 'ar') }}" style="color:orange">English</a></li>
 
             </ul>
         </li>

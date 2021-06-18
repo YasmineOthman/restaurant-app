@@ -1,5 +1,5 @@
 <x-layouts.app>
-  <x-navbar />
+  <x-navbar/>
     <x-carousel/>
 
 </x-layouts.app>
