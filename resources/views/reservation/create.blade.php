@@ -9,13 +9,13 @@
         <div class="field">
         <label class="label form"> Day:</label>
         <div class="control">
-          <input  class="input @error('day')is-danger @enderror is-normal" name="day" type="date"  value="{{ old('day') }}" placeholder="" min="" max="">
+          <input  class="input @error('day')is-danger @enderror is-normal" name="day" type="datetime-local"  value="{{ old('day') }}" placeholder="" min="" max="">
         </div>
         @error('day')
           <p class="help is-danger">{{ $message }}</p>
         @enderror
       </div>
-      <div class="field">
+      {{-- <div class="field">
         <label class="label form"> Time:</label>
         <div class="control">
           <input class="input @error('time')is-danger @enderror is-normal" name="time" type="time" value="{{ old('time') }}" placeholder="">
@@ -23,7 +23,7 @@
         @error('time')
           <p class="help is-danger">{{ $message }}</p>
         @enderror
-      </div>
+      </div> --}}
       <div class="field">
         <div class="control" id="table">
           <label class="label form">Available Tables</label>

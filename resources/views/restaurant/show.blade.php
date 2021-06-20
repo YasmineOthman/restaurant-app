@@ -104,7 +104,7 @@
         <a href="{{route('res-table.createtable', $restaurant->id)}}" class="btn btn-dark" style="color:black" role=button>add table</a>
       </div>
     <div class="image">
-        <img src="{{asset("storage/$restaurant->image")}}">
+        <img src="{{ $restaurant->image }}">
     </div>
 </section>
 <!-- home section ends -->

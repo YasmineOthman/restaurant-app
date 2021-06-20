@@ -49,7 +49,7 @@ class TableController extends Controller
     {
         $restaurant = Restaurant::findOrFail($request->restaurantid);
         $request->validate([
-            'place'                     => 'required|min:4|max:255',
+            // 'place'                     => 'min:4|max:255',
             'chairs_count'              => 'required|numeric|min:0',
             'status'                    =>'required'
         ]);
