@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Meal;
 use App\Models\Order;
 use App\Models\Category;
+use App\Models\invoice;
 use App\Models\MealOrder;
+use App\Models\Offer;
+use App\Models\Offerlog;
 use App\Models\Restaurant;
 use App\Models\Sale;
+use App\Models\Salelog;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -59,6 +63,7 @@ class OrderController extends Controller
 
        // dd($request->{"quantity"$meal});
         $order = new Order();
+        $invoice=new invoice();
         $order->place = $request->place;
         $order->notes = $request->notes;
         $order->user_id = 1;
@@ -66,23 +71,59 @@ class OrderController extends Controller
         $order->discount_id = 1;
         $order->slug = Str::slug($request->place, '-');
         $order->save();
+        $invoice->order_id=$order->id;
+
+
         $sum = 0;
+        $is_offer=Offer::where('restaurant_id',$order->restaurant_id)->where('End_date', '>=', Carbon::now()->toDateString())->get();
+$check=0;
+if ($is_offer->count()>0){
+    $sum=$is_offer[0]->cost;
+    $invoice->count=$sum;
+        $invoice->save();
+        $offer_log = new Offerlog();
+        $offer_log->offer_id=$is_offer[0]->id;
+        $offer_log->order_id=$order->id;
+        $offer_log->user_id=1;
+        $offer_log->save();
+
+
+        $check=1;
+} 
         foreach($request->meals as $meal){
             $mealorder = new MealOrder();
+           
             $mealorder->meal_id=$meal;
             $mealorder->quantity=$request->{"quantity".$meal};
             $mealorder->order_id=$order->id;
-            $mealorder->save();
+            if($check==0) {
             $is_sale=Sale::where('meals_id',$mealorder->meal_id)->where('End_date', '>=', Carbon::now()->toDateString())->get();
          
             //dd($is_sale);
             if ($is_sale->count()>0){
+               $mealorder->price = (($request->{"price".$meal} - ($is_sale[0]->discount/100 * ($request->{"price".$meal} )) )* $mealorder->quantity) ;
                 $sum = (($request->{"price".$meal} - ($is_sale[0]->discount/100 * ($request->{"price".$meal} )) )* $mealorder->quantity) + $sum;
+  
+
+                $sale_log = new Salelog();
+                $sale_log->sale_id=$is_sale[0]->id;
+                $sale_log->order_id=$order->id;
+                $sale_log->user_id=1;
+                $sale_log->save();
 
             }
-            else 
-            $sum = ($request->{"price".$meal} * $mealorder->quantity) + $sum;
-        }
+            else {
+            $mealorder->price=$request->{"price".$meal} * $mealorder->quantity;
+
+            $sum = ($request->{"price".$meal} * $mealorder->quantity) + $sum;}
+            $mealorder->save();
+        } else {
+            $mealorder->price=0;
+        $mealorder->save();
+      }}
+      if ($check==0){
+      $invoice->count=$sum;
+      $invoice->save();}
         echo "<script>confirm('Cost is $sum');</script>";
          // foreach ($request->meals as $meal){
         // $order->meals()->sync($request->meals);
