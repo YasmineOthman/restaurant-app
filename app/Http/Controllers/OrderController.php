@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Meal;
 use App\Models\Order;
 use App\Models\Category;
+use App\Models\invoice;
 use App\Models\MealOrder;
 use App\Models\Restaurant;
 use App\Models\Sale;
@@ -59,6 +60,7 @@ class OrderController extends Controller
 
        // dd($request->{"quantity"$meal});
         $order = new Order();
+        $invoice=new invoice();
         $order->place = $request->place;
         $order->notes = $request->notes;
         $order->user_id = 1;
@@ -66,23 +68,34 @@ class OrderController extends Controller
         $order->discount_id = 1;
         $order->slug = Str::slug($request->place, '-');
         $order->save();
+        $invoice->order_id=$order->id;
+
+
         $sum = 0;
+
         foreach($request->meals as $meal){
             $mealorder = new MealOrder();
+           
             $mealorder->meal_id=$meal;
             $mealorder->quantity=$request->{"quantity".$meal};
             $mealorder->order_id=$order->id;
-            $mealorder->save();
+            
             $is_sale=Sale::where('meals_id',$mealorder->meal_id)->where('End_date', '>=', Carbon::now()->toDateString())->get();
          
             //dd($is_sale);
             if ($is_sale->count()>0){
+               $mealorder->price = (($request->{"price".$meal} - ($is_sale[0]->discount/100 * ($request->{"price".$meal} )) )* $mealorder->quantity) ;
                 $sum = (($request->{"price".$meal} - ($is_sale[0]->discount/100 * ($request->{"price".$meal} )) )* $mealorder->quantity) + $sum;
 
             }
             else 
+            $mealorder->price=$request->{"price".$meal} * $mealorder->quantity;
+
             $sum = ($request->{"price".$meal} * $mealorder->quantity) + $sum;
         }
+        $mealorder->save();
+        $invoice->count=$sum;
+        $invoice->save();
         echo "<script>confirm('Cost is $sum');</script>";
          // foreach ($request->meals as $meal){
         // $order->meals()->sync($request->meals);

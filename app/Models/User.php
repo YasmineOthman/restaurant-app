@@ -29,6 +29,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+    public function offerslog()
+    {
+        return $this->hasMany(Offerlog::class);
+    }
+    public function saleslog()
+    {
+        return $this->hasMany(Salelog::class);
+    }
+
     public function restaurants()
     {
         return $this->belongsToMany(Restaurant::class);

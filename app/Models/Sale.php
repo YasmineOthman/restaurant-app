@@ -13,4 +13,9 @@ class Sale extends Model
     {
         return $this->belongsTo(Meal::class);
     }
+
+    public function saleslog()
+    {
+        return $this->hasMany(Salelog::class);
+    }
 }

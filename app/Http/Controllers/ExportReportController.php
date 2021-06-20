@@ -18,6 +18,18 @@ class ExportReportController extends Controller
        return view('Reports');
     }
 
+    /*DB::table("clicks")
+	->select("id" ,DB::raw("(COUNT(*)) as total_click"))
+        ->orderBy('created_at')
+        ->groupBy(DB::raw("MONTH(created_at)"))
+        ->get();
+        
+        ->select(DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+->groupby('year','month')
+->get();
+        
+        
+        */
     public function export() 
     {
         return Excel::download(new OrdersuserExport, 'ordersusers.xlsx');

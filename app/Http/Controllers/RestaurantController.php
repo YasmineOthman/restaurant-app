@@ -174,7 +174,7 @@ class RestaurantController extends Controller
         //static ip for now ..
         $ip ='5.0.255.255';
         $data = Location::get($ip);
-       //dd($data);
+      //  dd($data);
             $restaurants = Restaurant:: where('city', 'like', '%'.$data->regionName.'%')->orwhere('address', 'like', '%'.$data->cityName.'%')->get();
             return view('restaurant.index', ['restaurants' => $restaurants]);
           
