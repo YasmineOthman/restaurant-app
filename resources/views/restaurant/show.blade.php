@@ -1,4 +1,4 @@
-{{-- <x-layouts.app>
+<x-layouts.app>
   <x-navbar />
     <section class="hero is-success is-small">
       <div class="hero-body"  >
@@ -22,7 +22,7 @@
                {{-- <li><a href="{{route('res-order.createorder',$restaurant->id)}}"style="text-decoration:none; color:orange;">
                 <b> Make Order</b></a></li> --}}
                 {{-- ="/posts/{{ $post->id }}" --}}
-            {{-- </ul>
+             </ul>
           </div>
         </nav>
       </div>
@@ -33,8 +33,8 @@
          <p> Address: {{ $restaurant->city }} - {{$restaurant->address}}  {!! $restaurant->description !!}</p>
         </div>
         <h3>Categories in the restaurant:</h3>
-        </div></section> --}}
-    {{-- <section class="section">
+        </div></section>
+   <section class="section">
       <div class="container">
         <div class="columns is-multiline">
             @foreach ($restaurant->categories as $category)
@@ -50,8 +50,8 @@
                     <div class="media">
                       <div class="media-content">
                         <span class="title is-4 form">{{ $category->type }}</span><br>
-                      </div> --}}
-                    {{-- </div>
+                      </div>
+                     </div>
                   </div>
                 </div>
               </a>
@@ -59,10 +59,11 @@
               @endforeach
             </div>
           </div>
-        </div> --}}
-      {{-- </div>
+        </div>
+      </div>
     </section>
-    </x-layouts> --}}
+    </x-layouts>
+
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,7 +101,7 @@
     <div class="content">
         <h3>{{$restaurant->name}} Restaurant</h3>
         <p>{!! $restaurant->description !!}</p>
-        <a href="login" class="btn btn-dark" style="color:black" role=button>Get Order</a>
+        <a href="order/{$restaurant->id}" class="btn btn-dark" style="color:black" role=button>Get Order</a>
         <a href="{{route('res-table.createtable', $restaurant->id)}}" class="btn btn-dark" style="color:black" role=button>add table</a>
       </div>
     <div class="image">
