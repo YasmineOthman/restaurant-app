@@ -19,9 +19,9 @@ class OrdersUserExport implements FromCollection , WithHeadings
     public function collection()
     {
         return   $orders = DB::table('orders')
-        ->select(DB::raw('count(*) as order_count , user_id'))
+        ->select(DB::raw('count(*) as order_count , sale_id'))
         
-        ->groupBy('user_id')
+        ->groupBy('sale_id')
         ->get();
         
 

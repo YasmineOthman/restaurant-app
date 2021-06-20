@@ -13,6 +13,19 @@ class Order extends Model
         return $this->belongsToMany(Meal::class)->withpivot('quantity');
 
     }
+    public function invoice()
+    {
+        return $this->hasOne(invoice::class);
+    }
+    public function offerslog()
+    {
+        return $this->hasMany(Offerlog::class);
+    }
+    public function saleslog()
+    {
+        return $this->hasMany(Salelog::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

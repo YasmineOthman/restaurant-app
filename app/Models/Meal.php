@@ -28,5 +28,9 @@ class Meal extends Model
     {
         return asset("storage/{$value}");
     }
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
 
 }
