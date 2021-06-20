@@ -12,4 +12,9 @@ class Offer extends Model
     {
         return $this->belongsTo(Restaurant::class);
     }
+    public function offerslog()
+    {
+        return $this->hasMany(Offerlog::class);
+    }
+   
 }
