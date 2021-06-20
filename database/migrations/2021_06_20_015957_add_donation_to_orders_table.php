@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRatingRestaurantTable extends Migration
+class AddDonationToOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateRatingRestaurantTable extends Migration
      */
     public function up()
     {
-        Schema::create('rating_restaurant', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('rating_id');
-            $table->foreignId('restaurant_id');
-            $table->float('rate');
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->integer('donation')->default(0);
         });
     }
 
@@ -29,6 +25,8 @@ class CreateRatingRestaurantTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rating_restaurant');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn('donation');
+        });
     }
 }

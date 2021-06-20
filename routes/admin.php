@@ -14,6 +14,7 @@ use App\Http\Controllers\MealOrderController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ExportReportController;
+use App\Http\Controllers\FcmController;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\App;
@@ -29,3 +30,6 @@ use Illuminate\Support\Facades\Session;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('fcm', [FcmController::class, 'index']);
+Route::get('store', [FcmController::class, 'sendNotification']);

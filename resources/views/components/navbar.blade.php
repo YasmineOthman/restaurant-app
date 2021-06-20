@@ -23,10 +23,10 @@
               Account
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#"style="color: orange">Log in</a></li>
-              <li><a class="dropdown-item" href="#" style="color: orange">Sign in</a></li>
+              <li><a class="dropdown-item" href="{{ asset('login') }}"style="color: orange">Log in</a></li>
+              <li><a class="dropdown-item" href="{{ asset('register') }}" style="color: orange">Sign in</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><form action="#" method="post">
+              <li><form action="logout" method="post">
                 @csrf
                 <input type="submit" class="button is-light" value="Logout">
               </form></li>
@@ -42,16 +42,8 @@
 
 
             </ul>
-        </li> --}}
-        {{-- <select  name="search" value="{{ old('search ') }}">
-          <option value="name" style="color: #eb640a; ">name</option>
-          <option value="address" style="color: #eb640a">address</option>
-          <option value="city" style="color: #eb640a">city</option>
+        </li>
 
-
-
-        </select> --}}
-        {{-- <input list="search" value="{{ old('search ') }}"> --}}
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">

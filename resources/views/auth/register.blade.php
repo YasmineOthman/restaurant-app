@@ -1,55 +1,66 @@
-<x-guest-layout>
+<x-layouts.auth title="Register">
+  <form method="POST" action="{{ route('register') }}">
+      @csrf
 
-  <x-auth-card>
+      <div class="field">
+          <label class="label" for="email">{{ __('Name') }}</label>
+          <div class="control">
+              <input id="name" type="text" class="input @error('name') is-danger @enderror" name="name"
+                  value="{{ old('name') }}" required autocomplete="name" autofocus>
+          </div>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+          @error('name')
+              <p class="help is-danger" role="alert">
+                  {{ $message }}
+              </p>
+          @enderror
+      </div>
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+      <div class="field">
+          <label class="label" for="email">{{ __('E-Mail Address') }}</label>
+          <div class="control">
+              <input id="email" type="email" class="input @error('email') is-danger @enderror" name="email"
+                  value="{{ $email ?? old('email') }}" required autocomplete="email">
+          </div>
+          @error('email')
+              <p class="help is-danger" role="alert">
+                  {{ $message }}
+              </p>
+          @enderror
+      </div>
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+      <div class="field">
+          <label class="label" for="password">{{ __('Password') }}</label>
+          <div class="control">
+              <input id="password" type="password" class="input @error('password') is-danger @enderror"
+                  name="password" required autocomplete="new-password">
+          </div>
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
+          @error('password')
+              <p class="help is-danger" role="alert">
+                  {{ $message }}
+              </p>
+          @enderror
+      </div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+      <div class="field">
+          <label class="label" for="password-confirm">{{ __('Confirm Password') }}</label>
+          <div class="control">
+              <input id="password-confirm" type="password" class="input" name="password_confirmation" required
+                  autocomplete="new-password">
+          </div>
+      </div>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+      <hr>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+      <div class="field is-form-action-buttons">
+          <button type="submit" class="button is-primary">
+              {{ __('Register') }}
+          </button>
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-      </x-auth-card>
-</x-guest-layout>
+          <a class="button is-text" href="{{ route('login') }}">
+              {{ __('Login') }}
+          </a>
+      </div>
+  </form>
+</x-layouts.auth>
