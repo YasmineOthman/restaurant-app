@@ -121,6 +121,11 @@ class RestaurantController extends Controller
                    $tab->save();
 
             }
+            if(Carbon::now() >= $end_time){
+                $tab = Table::where('id',$reserve->table)->first();
+                $tab->status = 0;
+                $tab->save();
+            }
         }
         // $tables->save();
         // $tables = Table::where('restaurant_id' , '=' , $restaurant->id)->get();
