@@ -10,7 +10,11 @@ class Reservation extends Model
     use HasFactory;
   public function tables()
     {
-        return $this->hasMany(Table::class);
+        return $this->belongsToMany(Table::class);
     }
-  
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
 }

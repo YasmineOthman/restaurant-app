@@ -16,5 +16,9 @@ class Offer extends Model
     {
         return $this->hasMany(Offerlog::class);
     }
-   
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
 }

@@ -64,11 +64,17 @@
     </section>
     </x-layouts> --}}
     <!DOCTYPE html>
-<html lang="en">
+    <html lang="{{ App::getLocale() }}" dir="{{ App::getLocale() == 'en' ? 'ltr' : 'rtl'}}">
+{{-- <html lang="en"> --}}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }} </title>
+    @if (App::getLocale() == 'ar')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-LPvXVVAlyPoBSGkX8UddpctDks+1P4HG8MhT7/YwqHtJ40bstjzCqjj+VVVDhsCo" crossorigin="anonymous">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> --}}
+    <link rel="stylesheet" href="{{asset('css/pages/style.css')}}">
+    @endif
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- custom css file link  -->
@@ -77,40 +83,43 @@
 <body>
 <!-- header section starts  -->
 <header style="background-color:black">
-    <a href="#" class="logo"><i class="fas fa-utensils"></i>FOODY</a>
+    <a href="#" class="logo" style="text-decoration: none"><i class="fas fa-utensils"></i>FOODY</a>
     <div id="menu-bar" class="fas fa-bars" ></div>
     <nav class="navbar">
         {{-- <a href="#home" style="color:orange">home</a> --}}
-        <a class="nav-link active" aria-current="page" href="/" style="color: orange">Home</a>
+        <a class="nav-link active" aria-current="page" href="/" style="color: orange">{{ __('validation.attributes.home') }}</a>
         {{-- <a href="#speciality" style="color:orange">Restaurants</a> --}}
-        <a class="nav-link active" href="{{route('restaurants.index')}}" style="color: orange">Restaurants</a>
+        <a class="nav-link active" href="{{route('restaurants.index')}}" style="color: orange">{{ __('validation.attributes.Restaurants') }}</a>
         {{-- <a href="#popular" style="color:orange">Contact us</a> --}}
         {{-- <a href="#gallery" style="color:orange">Account</a> --}}
-         <a class="nav-link  active" href="{{route('categories.create')}}" style="color:orange">
-          Categories
+         <a class="nav-link  active" href="#speciality" style="color:orange">
+          {{ __('validation.attributes.categories') }}
         </a>
-        <a href="#popular" style="color:orange">tables</a>
+
+        <a href="#popular" style="color:orange ;text-decoration: none">{{ __('validation.attributes.tables') }}</a>
+        @auth
         <a href="{{route('res-order.createorder',$restaurant->id)}}" style="color:orange">order</a>
-        <a class="nav-link active" href="#footer" style="color: orange">Contact us</a>
+        @endauth
+        <a class="nav-link active" href="#footer" style="color: orange">{{ __('validation.attributes.contact us') }}</a>
     </nav>
 </header>
 <!-- header section ends -->
 <!-- home section starts  -->
 <section class="home" id="home" style="background-color:orange">
     <div class="content">
-        <h3>{{$restaurant->name}} Restaurant</h3>
+        <h3>{{$restaurant->name}} {{ __('validation.attributes.restaurant') }}</h3>
         <p>{!! $restaurant->description !!}</p>
-        <a href="login" class="btn btn-dark" style="color:black" role=button>Get Order</a>
+        <a href="{{route('res-order.createorder',$restaurant->id)}}" class="btn btn-dark" style="color:black" role=button>Get Order</a>
         <a href="{{route('res-table.createtable', $restaurant->id)}}" class="btn btn-dark" style="color:black" role=button>add table</a>
       </div>
     <div class="image">
-        <img src="{{asset("storage/$restaurant->image")}}">
+        <img src="{{ $restaurant->image }}">
     </div>
 </section>
 <!-- home section ends -->
 <!-- speciality section starts  -->
 <section class="speciality" id="speciality">
-    <h1 class="heading" style="color:orange"> our <span>Categories</span> </h1>
+    <h1 class="heading" style="color:orange">  <span>{{ __('validation.attributes.our categories') }}</span> </h1>
          {{-- <div class="container-fluid padding ">
           <div class="row padding text-center" >
             @foreach ($restaurant->categories as $category)
@@ -145,16 +154,16 @@
 
 <section class="popular" id="popular">
 
-    <h1 class="heading" style="color:orange"><span>our</span> tables </h1>
+    <h1 class="heading" style="color:orange"><span>{{ __('validation.attributes.our tables') }} </span></h1>
 
     <div class="box-container">
       @foreach ($restaurant->tables as $table)
       @if($table->status == 0)
         <div class="box">
-            <span class="price"> {{$table->chairs_count}} chairs </span>
+            <span class="price"> {{$table->chairs_count}} {{ __('validation.attributes.chairs') }} </span>
             <img src="images/p-1.jpg" alt="">
             <h3>{{ $table->place_table }}</h3>
-            <a href="{{route('res-reservation.createreservation',$restaurant->id,$table->id)}}" class="btn">reserve now</a>
+            <a href="{{route('res-reservation.createreservation',$restaurant->id,$table->id)}}" class="btn">{{ __('validation.attributes.reserve now') }}</a>
         </div>
         @endif
         @endforeach
@@ -234,26 +243,26 @@
 
 <div class="step-container">
 
-    <h1 class="heading" style="color:orange">our <span>services</span></h1>
+    <h1 class="heading" style="color:orange"><span>{{ __('validation.attributes.our services') }}</span></h1>
 
     <section class="steps">
 
         <div class="box">
-          <a href="{{route('categories.index')}}">
+          <a href="{{route('categories.index')}}" style="text-decoration: none">
             <img src="{{asset('images/step-1.jpg')}}" alt="">
-            <h3 style="color:orange">choose your favorite food</h3>
+            <h3 style="color:orange">{{ __('validation.attributes.choose your favorite food') }}</h3>
           </a>
         </div>
         <div class="box">
-          <a href="{{route('res-order.createorder',$restaurant->id)}}">
+          <a href="{{route('res-order.createorder',$restaurant->id)}}" style="text-decoration: none">
             <img src="{{asset('images/step-2.jpg')}}" alt="">
-            <h3 style="color:orange">online order and delivery</h3>
+            <h3 style="color:orange">{{ __('validation.attributes.online order and delivery') }}</h3>
           </a>
         </div>
         <div class="box">
-          <a href="{{route('res-reservation.createreservation',$restaurant->id)}}">
+          <a href="{{route('res-reservation.createreservation',$restaurant->id)}}" style="text-decoration: none">
             <img src="{{asset('images/step-4.jpg')}}" alt="">
-            <h3 style="color:orange">reserve your table</h3>
+            <h3 style="color:orange">{{ __('validation.attributes.reserve your table') }}</h3>
           </a>
         </div>
         {{-- <div class="box">
@@ -431,11 +440,11 @@
 
 <section class="footer" id="footer">
     <div class="share">
-        <a href="#" class="btn">facebook</a>
-        <a href="#" class="btn">twitter</a>
-        <a href="#" class="btn">instagram</a>
-        <a href="#" class="btn">pinterest</a>
-        <a href="#" class="btn">linkedin</a>
+        <a href="#" class="btn">{{ __('validation.attributes.facebook') }}</a>
+        <a href="#" class="btn">{{ __('validation.attributes.twitter') }}</a>
+        <a href="#" class="btn">{{ __('validation.attributes.instagram') }}</a>
+        <a href="#" class="btn">{{ __('validation.attributes.pinterest') }}</a>
+        <a href="#" class="btn">{{ __('validation.attributes.linkedin') }}</a>
     </div>
     <h1 class="credit"> created by <span> foody </span> | all rights reserved! </h1>
 </section>

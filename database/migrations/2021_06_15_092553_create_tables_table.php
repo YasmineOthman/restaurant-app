@@ -15,8 +15,7 @@ class CreateTablesTable extends Migration
     {
         Schema::create('tables', function (Blueprint $table) {
             $table->id();
-            $table->string('place_table');
-
+            $table->string('place_table')->nullable();
             $table->integer('chairs_count');
             $table->boolean('status');
             $table->foreignId('restaurant_id');

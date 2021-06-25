@@ -37,4 +37,4 @@
     </div>
   </section>
 
-  </x-layouts>
+</x-layouts.app>

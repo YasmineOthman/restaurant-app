@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Table;
 use App\Models\Restaurant;
+use App\Models\Reservation;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\ReservationTable;
 use Stevebauman\Location\Facades\Location;
 
 
@@ -41,7 +44,7 @@ class RestaurantController extends Controller
              $restaurants = Restaurant:: where('address', 'like', '%'.$name.'%')->get();
              return view('restaurant.index', ['restaurants' => $restaurants]);
              }
-          
+
     }
     /**
      * Show the form for creating a new resource.
@@ -104,8 +107,27 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
+        date_default_timezone_set('Asia/Damascus');
         $tables = Table::all();
-        // dd($restaurant->id);
+        $restab = ReservationTable::all();
+        $reservation = Reservation::all();
+        foreach ($reservation as $reserve){
+            $end_time = date("Y-m-d H:i:s", strtotime('+2 hours',strtotime($reserve->time)));
+            // $new_date = date("Y-m-d H:i:s", strtotime('+4 hours', strtotime($date));
+            // dd($end_time);
+            if(Carbon::now()->between($reserve->time,$end_time)){
+                  $tab = Table::where('id',$reserve->table)->first();
+                   $tab->status = 1;
+                   $tab->save();
+
+            }
+            if(Carbon::now() >= $end_time){
+                $tab = Table::where('id',$reserve->table)->first();
+                $tab->status = 0;
+                $tab->save();
+            }
+        }
+        // $tables->save();
         // $tables = Table::where('restaurant_id' , '=' , $restaurant->id)->get();
         // foreach($tables as $table){
         //        dd($table->id);
@@ -174,13 +196,13 @@ class RestaurantController extends Controller
         //static ip for now ..
         $ip ='5.0.255.255';
         $data = Location::get($ip);
-      //  dd($data);
+
             $restaurants = Restaurant:: where('city', 'like', '%'.$data->regionName.'%')->orwhere('address', 'like', '%'.$data->cityName.'%')->get();
             return view('restaurant.index', ['restaurants' => $restaurants]);
-          
-      // dd($restaurants);
+
+      dd($restaurants);
         //echo $data->cityName;
-       
-       
+
+
 }
 }

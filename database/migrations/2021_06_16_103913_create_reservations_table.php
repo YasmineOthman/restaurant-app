@@ -17,8 +17,8 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->foreignId('restaurant_id');
             $table->foreignId('user_id');
-            $table->date('start_time');
-            $table->date('end_time');
+            // $table->date('day');
+            $table->datetime('time');
             $table->integer('table');
             $table->timestamps();
         });

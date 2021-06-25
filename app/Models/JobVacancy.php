@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class JobVacancy extends Model
 {
     use HasFactory;
-    public function users($var = null)
+
+    public function restaurant()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(Restaurant::class);
     }
     public function getRouteKeyName()
     {

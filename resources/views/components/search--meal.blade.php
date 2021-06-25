@@ -21,10 +21,13 @@
             Account
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#"style="color: orange">Log in</a></li>
-            <li><a class="dropdown-item" href="#" style="color: orange">Sign in</a></li>
+            {{-- <li><a class="dropdown-item" href="#"style="color: orange">Log in</a></li>
+            <li><a class="dropdown-item" href="#" style="color: orange">Sign in</a></li> --}}
+            <li><a class="dropdown-item" href="{{ asset('login') }}" style="color: orange">Log in</a></li>
+            <li><a class="dropdown-item" href="{{ asset('register') }}" style="color: orange">Sign in</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><form action="#" method="post">
+            {{-- <li><form action="#" method="post"> --}}
+            <li><form action="logout" method="post">
               @csrf
               <input type="submit" class="button is-light" value="Logout">
             </form></li>
@@ -51,9 +54,10 @@
             Language
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#"style="color: orange">Arabic</a></li>
-              <li><a class="dropdown-item" href="#" style="color: orange">English</a></li>
-
+              {{-- <li><a class="dropdown-item" href="#"style="color: orange">Arabic</a></li>
+              <li><a class="dropdown-item" href="#" style="color: orange">English</a></li> --}}
+              <li><a class="dropdown-item" href="{{ route('locale.toggle', App::getLocale() == 'ar' ? 'en': 'ar') }}" style="color: orange">Arabic</a></li>
+              <li><a class="dropdown-item" href="{{ route('locale.toggle', App::getLocale() == 'ar' ? 'en': 'ar') }}" style="color: orange">English</a></li>
           </ul>
       </li>
 

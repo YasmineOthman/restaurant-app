@@ -1,3 +1,3 @@
 <footer >
-    All rights reserved &copy; for FOODY
+    {{ __('validation.attributes.All rights reserved &copy; for FOODY') }}
 </footer>

@@ -1,56 +1,50 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+<x-layouts.auth title="{{ __('validation.attributes.Login') }}">
+  <form method="POST" action="{{ route('login') }}">
+    @csrf
+    <div class="field">
+      <label class="label" for="email">{{ __('auth.email') }}</label>
+      <div class="control">
+          <input id="email" type="email" class="input @error('email') is-danger @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+      </div>
+      @error('email')
+          <p class="help is-danger" role="alert">
+              {{ $message }}
+          </p>
+      @enderror
+    </div>
+    <div class="field">
+      <label class="label" for="password">{{ __('validation.attributes.password') }}</label>
+      <div class="control">
+          <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="current-password">
+      </div>
+      @error('password')
+          <p class="help is-danger" role="alert">
+              {{ $message }}
+          </p>
+      @enderror
+    </div>
+    <div class="field">
+      <div class="control">
+          <label class="checkbox">
+              <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+              {{ __('validation.attributes.Remember Me') }}
+          </label>
+      </div>
+    </div>
+    <hr>
+    <div class="field is-grouped">
+      <div class="control">
+          <button type="submit" class="btn is-primary">
+            {{ __('validation.attributes.Login') }}
+          </button>
+      </div>
+      @if (Route::has('password.request'))
+          <div class="control">
+              <a class="button is-text" href="{{ route('password.request') }}">
+                  {{ __('validation.attributes.Forgot Your Password?') }}
+              </a>
+          </div>
+      @endif
+    </div>
+  </form>
+</x-layouts.auth>
