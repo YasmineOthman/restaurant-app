@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCostToOfferTable extends Migration
+class CreateJobVacanciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class AddCostToOfferTable extends Migration
      */
     public function up()
     {
-        Schema::table('offer', function (Blueprint $table) {
-            //
-            $table->float('cost')->after('slug');
+        Schema::create('job_vacancies', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->date('end_of_vacancy');
+            $table->timestamps();
         });
     }
 
@@ -26,10 +29,6 @@ class AddCostToOfferTable extends Migration
      */
     public function down()
     {
-        Schema::table('offer', function (Blueprint $table) {
-            $table->dropColumn('cost');
-
-            //
-        });
+        Schema::dropIfExists('job_vacancies');
     }
 }

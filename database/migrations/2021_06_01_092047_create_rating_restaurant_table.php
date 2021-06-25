@@ -17,6 +17,7 @@ class CreateRatingRestaurantTable extends Migration
             $table->id();
             $table->foreignId('rating_id');
             $table->foreignId('restaurant_id');
+            $table->float('rate');
             $table->timestamps();
         });
     }

@@ -25,6 +25,7 @@
                <td><img src="{{ $meal->image }}" alt="Placeholder image" style="width: 50px;height:50px;" ></td>
                <td><input name="quantity{{ $meal->id }}" type="number" ></td>
                <td><input name= "price{{ $meal->id }}"  value= {{$meal->price}}></td>
+
              </tr><br>
            </table>
                   @endforeach
@@ -33,6 +34,12 @@
       @error('meals')
         <p class="help is-danger">{{ $message }}</p>
       @enderror
+    </div>
+    <div class='field'>
+      <label class="label_form">Donation To The Needy</label>
+      <div class="control">
+          <input type="number" value="0" name="donation" class="input"/>
+      </div>
     </div>
     <div class="field">
       <label class="label form">Notes</label>

@@ -7,6 +7,10 @@ use App\Models\Category;
 use App\Models\Component;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Notifications\MealPublished;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class MealController extends Controller
 {
@@ -15,6 +19,12 @@ class MealController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+        if (Auth::check() && Auth::user()->role_id != 3) {
+        }
+    }
     public function index()
     {
         $meals = Meal::all();
@@ -92,6 +102,7 @@ class MealController extends Controller
         $meal->slug = Str::slug($request->name, '-');
         $meal->save();
         $meal->components()->sync($request->components);
+        /*    Notification::send(User::all(), new MealPublished($meal)); */
         return redirect()->route('meals.show', $meal);
     }
     public function order(Meal $meal)

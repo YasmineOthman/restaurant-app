@@ -18,4 +18,8 @@ class Sale extends Model
     {
         return $this->hasMany(Salelog::class);
     }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

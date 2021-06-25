@@ -24,6 +24,10 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show','createorder']);
+    }
     public function index()
     {
         //
@@ -57,8 +61,9 @@ class OrderController extends Controller
     {
         $request->validate([
             'place'                     => 'required|min:4|max:255',
-            'notes'                     => 'required|min:4|max:255'
+            'notes'                     => 'required|min:4|max:255',
             // 'meals'                     => 'array'
+            'donation'                  => 'required|numeric'
         ]);
 
        // dd($request->{"quantity"$meal});
@@ -69,6 +74,7 @@ class OrderController extends Controller
         $order->user_id = 1;
         $order->restaurant_id = 1;
         $order->discount_id = 1;
+        $order->donation = $request->donation;
         $order->slug = Str::slug($request->place, '-');
         $order->save();
         $invoice->order_id=$order->id;
@@ -89,21 +95,21 @@ if ($is_offer->count()>0){
 
 
         $check=1;
-} 
+}
         foreach($request->meals as $meal){
             $mealorder = new MealOrder();
-           
+
             $mealorder->meal_id=$meal;
             $mealorder->quantity=$request->{"quantity".$meal};
             $mealorder->order_id=$order->id;
             if($check==0) {
             $is_sale=Sale::where('meals_id',$mealorder->meal_id)->where('End_date', '>=', Carbon::now()->toDateString())->get();
-         
+
             //dd($is_sale);
             if ($is_sale->count()>0){
                $mealorder->price = (($request->{"price".$meal} - ($is_sale[0]->discount/100 * ($request->{"price".$meal} )) )* $mealorder->quantity) ;
                 $sum = (($request->{"price".$meal} - ($is_sale[0]->discount/100 * ($request->{"price".$meal} )) )* $mealorder->quantity) + $sum;
-  
+
 
                 $sale_log = new Salelog();
                 $sale_log->sale_id=$is_sale[0]->id;
@@ -124,64 +130,42 @@ if ($is_offer->count()>0){
       if ($check==0){
       $invoice->count=$sum;
       $invoice->save();}
-        echo "<script>confirm('Cost is $sum');</script>";
-         // foreach ($request->meals as $meal){
-        // $order->meals()->sync($request->meals);
-        // //  $request->{"quantity".$meal};
-        // $sum = ($meal->price * $request->{"quantity".$meal}) + $sum;
-        // }
-        // foreach ($order->meals as $meal){
-        //  dd($request->quantity);
-        //   $sum = ($meal->price * $request->quantity) + $sum;
-        //   $order->meals()->attach($meal->id,['quantity'=>$request->{"quantity".$meal});
+
+    //   echo "<script>confirm('Cost is $sum');</script>";
+      $sum_all = $sum + $request->donation;
+        $token = "fxUib1tmro4:APA91bFp2OBuNYGaLPWhC7GuVYJyjg_Ev2ZIRFJzojm3Jz3Nf1AiU6U3N_6XPKP_VQ4ACBHeJyF25d4_qV9qKuCCqOtGahetnRezB6WRQtGhTlqbKqkCbxuKHW-az26k3P_P_w91Ffld";
+        $from = "AAAA0cPI-Fg:APA91bHcqHWlYOVTQVxjU6ot1hL3tGT6uhuZ4mzKvNYHxbfd8fCgZ-sAyhOGYZ57P5LWE0e1J0U6ZHDZVkzUbraifhWhWm6gnsb9kbshQ0rtJ8L-LGaUlKv1JgDFKseKUJ5fKqZL7n9J";
+        $msg = array(
+            'body'  => "Order Meal",
+            'title' => "Hi, From {{Auth::user()->name}}",
+            'receiver' => 'erw',
+            'icon'  => "https://img.icons8.com/dusk/64/ffffff/waiter.png",/*Default Icon*/
+            'sound' => 'black.wav'/*Default sound*/
+        );
+        $fields = array(
+            'to'        => $token,
+            'notification'  => $msg
+        );
+        $headers = array(
+            'Authorization: key=' . $from,
+            'Content-Type: application/json'
+        );
+        //#Send Reponse To FireBase Server
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+        $result = curl_exec($ch);
+        /* dd($result); */
+        curl_close($ch);
+        echo "<script>confirm('Cost Meal is $sum  And ALL is $sum_all');</script>";
         }
-        // if($request->quantity){
-        //     $quantity = $request->quantity;
-        // }
-        // $order->save();
-        // $order->meals()->sync($request->meals);
-        // if($order->meals()->save($meal, array('quantity' => $quantity))){
-        //     dd($quantity);
-        //     // return response()->json(['message'=>'User Event Created','data'=>$event],200);
-        // }
-        //   dd($request->order->pivot->quantity);
-                // $order->meals()->attach($meal->id,['quantity'=>$request->quantity]);
-        // foreach ($order->meals as $meal)
-        //    {
-        //     $quantity =  $meal->pivot->quantity;
-        //         }
-        // $quantity = 0;
-        // dd("susssss");
-        // $order->meals()->attach(1,['quantity'=>$quantity]);
-        // return response()->json(['message'=>'Error','data'=>null],400);
-        // dd($order->meals);
-        // return redirect()->route('orders.show', $order);
-    //     $sum = 0;
-    //     foreach ($order->meals as $meal){
-    //     //   $sum = $meal->price + $sum;
-    // }
-        // echo "<script>confirm('Cost is $sum');</script>";
-    // return redirect()->route('orders.show', $order);
-
     public function order(Request $request, Order $order, Meal $meal)
-
     {
-        // $orders = DB::table('orders')
-        //     ->leftJoin('meal_order', 'orders.id', '=', 'meal_order.order_id')
-        //     ->select('orders.id', 'meal_order.order_id', 'meal_order.quantity')
-        //     ->get();
-        //     dd('heeeeeeeeeeeeeelo');
-        // $quantity = '';
-        // if($request->quantity){
-        //     $quantity = $request->quantity;
-        // }
-        // if($order->meals()->save($meal, array('quantity' => $quantity))){
-        //     return response()->json(['message'=>'User Event Created','data'=>$event],200);
-        // }
-        // return response()->json(['message'=>'Error','data'=>null],400);
-
     }
-
     /**
      * Display the specified resource.
      *
@@ -217,7 +201,8 @@ if ($is_offer->count()>0){
         $request->validate([
             'place'                     => 'required|min:4|max:255',
             'notes'                     => 'required|min:4|max:255',
-            'meals'                     => 'array'
+            'meals'                     => 'array',
+            'donation'                  => 'required|numeric'
         ]);
         $order->place = $request->place;
         $order->notes = $request->notes;
@@ -231,7 +216,12 @@ if ($is_offer->count()>0){
         foreach ($order->meals as $meal){
           $sum = $meal->price + $sum;
         }
-        echo "<script>alert('Cost is $sum');</script>";
+        // echo "<script>alert('Cost is $sum');</script>";
+        $sum_all = $sum + $request->donation;
+        echo "<script>alert('Cost Meals is $sum
+        and All Cost is $sum_all');</script>";
+        return redirect()->back();
+
     }
 
     /**

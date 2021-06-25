@@ -10,7 +10,7 @@ class Salelog extends Model
     use HasFactory;
 
 
-    
+
     public function sales()
     {
         return $this->belongsToMany(Sale::class);}
@@ -22,8 +22,6 @@ class Salelog extends Model
             public function orders()
             {
                 return $this->belongsToMany(Order::class);
-            
-            
             }
-            
+
 }

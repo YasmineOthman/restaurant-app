@@ -21,10 +21,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
+
     public function orders()
     {
         return $this->hasMany(Order::class);

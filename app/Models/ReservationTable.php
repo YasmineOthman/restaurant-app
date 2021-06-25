@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ReservationTable extends Model
 {
     use HasFactory;
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
+

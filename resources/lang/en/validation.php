@@ -121,6 +121,7 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'Meal Name' => 'enter',
 
     /*
     |--------------------------------------------------------------------------
@@ -150,6 +151,41 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'password' => 'Password',
+        'confirm password' => 'Confirm Password',
+        'register'  => 'Register',
+        'Login'    => 'Log in',
+        'Remember Me'=> 'Remember Me',
+        'Forgot Your Password?' => 'Forgot Your Password?',
+        'home' => 'Home',
+        'Restaurants' => 'Restaurants',
+        'contact us' =>'Contact us',
+        'account' =>'Account',
+        'Logout' => 'Logout',
+        'name'=> 'name',
+        'address'=> 'address',
+        'city'=>'city',
+        'search'=>'Search',
+        'by location' =>'by location',
+        'Enter name,city or address of Restaurant'=>'Enter name,city or address of Restaurant',
+        'All rights reserved &copy; for FOODY' => 'All rights reserved @ for FOODY',
+        'tables' => 'tables',
+        'categories' => 'categories',
+        'restaurant' => 'restaurant',
+        'our categories' => 'Our Categories',
+        'our tables' => 'Our Tables',
+        'chairs' => 'Chairs',
+        'reserve now' => 'Reserve Now',
+        'our services' => 'Our Services',
+        'choose your favorite food'=>'choose your favorite food',
+        'online order and delivery'=>'online order and delivery',
+        'reserve your table'=>'reserve your table',
+        'facebook' => 'Facebook',
+        'instagram' => 'Instagram',
+        'linkedin' => 'Linkedin',
+        'twitter' => 'Twitter',
+        'pinterest' => 'Pinterest'
+    ],
 
 ];

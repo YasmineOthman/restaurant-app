@@ -58,7 +58,7 @@ class TableController extends Controller
         $table->chairs_count = $request->chairs_count;
         $table->status = $request->status;
         $table->restaurant_id = $request->restaurantid;
-        // $table->slug = Str::slug($request->place, '-');
+         $table->slug = Str::slug($request->place, '-');
         $table->save();
         return view('restaurant.show',['restaurant' => $restaurant]);
     }

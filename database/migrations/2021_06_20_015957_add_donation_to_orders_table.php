@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCostToOfferTable extends Migration
+class AddDonationToOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddCostToOfferTable extends Migration
      */
     public function up()
     {
-        Schema::table('offer', function (Blueprint $table) {
-            //
-            $table->float('cost');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->integer('donation')->default(0);
         });
     }
 
@@ -26,10 +25,8 @@ class AddCostToOfferTable extends Migration
      */
     public function down()
     {
-        Schema::table('offer', function (Blueprint $table) {
-            $table->dropColumn('cost');
-
-            //
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn('donation');
         });
     }
 }
