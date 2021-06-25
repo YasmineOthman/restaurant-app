@@ -13,4 +13,9 @@ class invoice extends Model
      {
         return $this->bselongsTo(Order::class);
      }
+
+     public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

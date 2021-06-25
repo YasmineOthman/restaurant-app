@@ -12,5 +12,9 @@ class Reservation extends Model
     {
         return $this->belongsToMany(Table::class);
     }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
 }

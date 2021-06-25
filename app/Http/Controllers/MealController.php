@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Meal;
 use App\Models\Category;
 use App\Models\Component;
-use App\Models\User;
-use App\Notifications\MealPublished;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Notifications\MealPublished;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 
@@ -30,34 +30,34 @@ class MealController extends Controller
         $meals = Meal::all();
         return view('meal.index', ['meals' => $meals]);
     }
-    public function search(Request $request)
+    public function search( Request $request)
     {
-
         $name =  $request->name;
         $search =  $request->search;
-        if ($name == null) {
+        if ($name == null){
             echo "<script>alert('please enter word to search');</script>";
         }
-        if ($search == "name" or $search == null) {
-            $meals = Meal::where('name', 'like', '%' . $name . '%')->get();
-            return view('meal.index', ['meals' => $meals]);
+        if($search == "name" or $search == null){
+           $meals = Meal:: where('name', 'like', '%'.$name.'%')->get();
+           return view('meal.index', ['meals' => $meals]);
         }
-        if ($search == "price") {
-            $meals = Meal::where('price', $name)->get();
+        if($search == "price"){
+            $meals = Meal:: where('price' , $name)->get();
             return view('meal.index', ['meals' => $meals]);
-        }
-        if ($search == "pricemore") {
-            $meals = Meal::where('price', '>=', $name)->get();
+            }
+        if($search == "pricemore"){
+            $meals = Meal:: where('price','>=' , $name)->get();
             return view('meal.index', ['meals' => $meals]);
+                }
+        if($search == "priceless"){
+             $meals = Meal:: where('price','<=' , $name)->get();
+             return view('meal.index', ['meals' => $meals]);
         }
-        if ($search == "priceless") {
-            $meals = Meal::where('price', '<=', $name)->get();
+        if($search == "calory"){
+            $meals = Meal:: where('calory' , $name)->get();
             return view('meal.index', ['meals' => $meals]);
-        }
-        if ($search == "calory") {
-            $meals = Meal::where('calory', $name)->get();
-            return view('meal.index', ['meals' => $meals]);
-        }
+            }
+
     }
 
     /**
@@ -69,7 +69,7 @@ class MealController extends Controller
     {
         $categories = Category::all();
         $components = Component::all();
-        return view('meal.create', ['categories' => $categories, 'components' => $components]);
+        return view('meal.create',['categories'=> $categories,'components'=>$components]);
     }
 
     /**
@@ -107,8 +107,8 @@ class MealController extends Controller
     }
     public function order(Meal $meal)
     {
-        // return($meal->name);
-        dd($meal->name);
+           // return($meal->name);
+           dd($meal->name);
     }
 
     /**
@@ -120,7 +120,7 @@ class MealController extends Controller
     public function show(Meal $meal)
     {
         // dd($meal->id);
-        return view('meal.show', ['meal' => $meal]);
+        return view('meal.show',['meal' => $meal]);
     }
 
     /**
@@ -134,7 +134,8 @@ class MealController extends Controller
 
         $categories = Category::all();
         $components = Component::all();
-        return view('meal.edit', ['meal' => $meal, 'categories' => $categories, 'components' => $components]);
+        return view('meal.edit',['meal' => $meal,'categories'=> $categories,'components'=>$components]);
+
     }
 
     /**
@@ -179,3 +180,9 @@ class MealController extends Controller
         //
     }
 }
+
+
+
+
+
+
