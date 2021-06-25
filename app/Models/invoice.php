@@ -11,6 +11,11 @@ class invoice extends Model
 
     public function order()
      {
-        return $this->bselongsTo(Order::class);
+        return $this->belongsTo(Order::class);
      }
+
+            
+     public function resturant()
+     {
+         return $this->belongsTo(Restaurant::class);}
 }

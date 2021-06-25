@@ -12,7 +12,7 @@ class Offer extends Model
     {
         return $this->belongsTo(Restaurant::class);
     }
-    public function offerslog()
+    public function offerslogs()
     {
         return $this->hasMany(Offerlog::class);
     }

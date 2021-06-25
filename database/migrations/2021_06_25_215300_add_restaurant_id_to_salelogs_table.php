@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCostToOfferTable extends Migration
+class AddRestaurantIdToSalelogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddCostToOfferTable extends Migration
      */
     public function up()
     {
-        Schema::table('offer', function (Blueprint $table) {
+        Schema::table('salelogs', function (Blueprint $table) {
             //
-            $table->float('cost')->after('slug');
+            $table->foreignId('restaurant_id')->references('id')->on('restaurants')->constrained()->onDelete('cascade');          
+
         });
     }
 
@@ -26,10 +27,9 @@ class AddCostToOfferTable extends Migration
      */
     public function down()
     {
-        Schema::table('offer', function (Blueprint $table) {
-            $table->dropColumn('cost');
-
+        Schema::table('salelogs', function (Blueprint $table) {
             //
+            $table->dropColumn('restaurant_id');
         });
     }
 }

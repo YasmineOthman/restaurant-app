@@ -23,7 +23,7 @@
     var chartdata = {
     type: 'bar',
     data: {
-    labels: <?php echo json_encode($users); ?>,
+    labels: <?php echo json_encode($sales); ?>,
     // labels: month,
     datasets: [
     {

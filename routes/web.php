@@ -14,6 +14,7 @@ use App\Http\Controllers\MealOrderController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ExportReportController;
+use App\Http\Controllers\ReportRouteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,15 @@ Route::post('/mealorder/{id}',[MealOrderController::class,'storeorder'])->name('
 Route::get('/restaurant',[RestaurantController::class,'search'])->name('restaurants.search');
 Route::get('/category',[CategoryController::class,'search'])->name('categories.search');
 Route::get('/meal',[MealController::class,'search'])->name('meals.search');
-Route::get("/chart", [ChartController::class,'Chart'])->name('chart');
+Route::get("/salechart", [ChartController::class,'SaleChart'])->name('salechart');
+Route::get("/offerchart", [ChartController::class,'OfferChart'])->name('offerchart');
+Route::get("/chart", [ChartController::class,'blde'])->name('chart');
+
+Route::post("/routef", [ReportRouteController::class,'routef'])->name('routef');
+
+
+Route::post("/invicechart", [ChartController::class,'InvoicesChart'])->name('invoicechart');
+
 Route::get('importExportView', [ExportReportController::class, 'importExportView']);
 Route::get('export', [ExportReportController::class, 'export'])->name('export');
 Route::get('/RestaurantByIPLocation', [RestaurantController::class,'Getlocation'])->name ('getbyip');

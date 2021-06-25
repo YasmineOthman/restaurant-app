@@ -16,9 +16,21 @@ class Restaurant extends Model
     {
         return $this->hasMany(Table::class);
     }
+    public function salelogs()
+    {
+        return $this->hasMany(Salelog::class);
+    }
+    public function offerlogs()
+    {
+        return $this->hasMany(Offerlog::class);
+    }
+    public function invoices()
+    {
+        return $this->hasMany(inovice::class);
+    }
     public function ratings()
     {
-        return $this->belongsToMany(Rating::class);
+        return $this->belongsTo(Rating::class);
     }
     public function offers()
     {
@@ -26,7 +38,7 @@ class Restaurant extends Model
     }
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
     public function getRouteKeyName()
     {

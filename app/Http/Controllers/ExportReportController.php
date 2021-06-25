@@ -30,8 +30,8 @@ class ExportReportController extends Controller
         
         
         */
-    public function export() 
+    public function export($id,$start,$end,$name) 
     {
-        return Excel::download(new OrdersuserExport, 'ordersusers.xlsx');
+        return Excel::download(new OrdersuserExport($id,$start,$end,$name), 'ordersofferusers.xlsx');
     }
 }

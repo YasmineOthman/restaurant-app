@@ -15,6 +15,9 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('restaurant_id')->references('id')->on('restaurants')->constrained()->onDelete('cascade');          
+
             $table->foreignId('order_id')->references('id')->on('orders')->constrained()->onDelete('cascade'); ;
             $table->float('count');
             $table->timestamps();

@@ -9,15 +9,20 @@ class Offerlog extends Model
 {
     use HasFactory;
 
-    public function offers()
+    public function offer()
     {
-        return $this->belongsToMany(Offer::class);}
+        return $this->belongsTo(Offer::class);}
 
         public function users()
         {
-            return $this->belongsToMany(User::class);}
+            return $this->belongsTo(User::class);}
 
-            public function orders()
+            public function order()
             {
-                return $this->belongsToMany(Order::class);}
+                return $this->belongsTo(Order::class);}
+
+                
+            public function resturant()
+            {
+                return $this->belongsTo(Restaurant::class);}
 }
