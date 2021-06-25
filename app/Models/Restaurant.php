@@ -12,6 +12,10 @@ class Restaurant extends Model
     {
         return $this->hasMany(Category::class);
     }
+    public function jobvacancies()
+    {
+        return $this->hasMany(JobVacancy::class);
+    }
     public function tables()
     {
         return $this->hasMany(Table::class);
