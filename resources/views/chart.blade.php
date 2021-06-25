@@ -27,8 +27,9 @@
     // labels: month,
     datasets: [
     {
-    label: 'this year',
-    backgroundColor: '#26B99A',
+    label: 'GroupBy' ,
+    backgroundColor: 'red',
+    
     borderWidth: 1,
     data: <?php echo json_encode($Data); ?>
     }

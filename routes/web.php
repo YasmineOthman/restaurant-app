@@ -14,14 +14,7 @@ use App\Http\Controllers\MealOrderController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ExportReportController;
-<<<<<<< HEAD
 use App\Http\Controllers\ReportRouteController;
-=======
-use GuzzleHttp\Psr7\Request;
-use Illuminate\Http\Request as HttpRequest;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Session;
->>>>>>> 1e239e25bd82ced27c12c58700dc88eca4296050
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +56,6 @@ Route::get('/table/{id}', [TableController::class, 'createtable'])->name('res-ta
 Route::get('/reservation/{id}', [ReservationController::class, 'createreservation'])->name('res-reservation.createreservation');
 Route::post('/mealorder/{id}', [MealOrderController::class, 'storeorder'])->name('meal-order.storeorder');
 // Route::post('/tables',[TableController::class,'storetable'])->name('res-table.storetable');
-<<<<<<< HEAD
 Route::get('/restaurant',[RestaurantController::class,'search'])->name('restaurants.search');
 Route::get('/category',[CategoryController::class,'search'])->name('categories.search');
 Route::get('/meal',[MealController::class,'search'])->name('meals.search');
@@ -76,12 +68,6 @@ Route::post("/routef", [ReportRouteController::class,'routef'])->name('routef');
 
 Route::post("/invicechart", [ChartController::class,'InvoicesChart'])->name('invoicechart');
 
-=======
-Route::get('/restaurant', [RestaurantController::class, 'search'])->name('restaurants.search');
-Route::get('/category', [CategoryController::class, 'search'])->name('categories.search');
-Route::get('/meal', [MealController::class, 'search'])->name('meals.search');
-Route::get("/chart", [ChartController::class, 'Chart'])->name('chart');
->>>>>>> 1e239e25bd82ced27c12c58700dc88eca4296050
 Route::get('importExportView', [ExportReportController::class, 'importExportView']);
 Route::get('export', [ExportReportController::class, 'export'])->name('export');
 Route::get('/RestaurantByIPLocation', [RestaurantController::class, 'Getlocation'])->name('getbyip');

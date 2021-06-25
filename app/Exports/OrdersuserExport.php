@@ -47,12 +47,11 @@ $column,$sortby,$relation,$datee,$class,$column_name)
 }
     public function collection()
     {
-  if ($this->relation='order'){
+  if ($this->relation=='order'){
     $orders = 
 
     $this->class::select(
         DB::raw("(sum(count)) as total_inovice"),       
-      
     DB::raw($this->datee)
     )->whereBetween('created_at',[$this->startdate, $this->enddate])->where('restaurant_id',$this->Restaurant_Id)
     ->groupBy($this->sortby)
@@ -61,7 +60,6 @@ $column,$sortby,$relation,$datee,$class,$column_name)
     return $orders;
   }
         $orders = 
-
         $this->class::select(
         DB::raw('count(*) as order_count'),
         DB::raw($this->column),
@@ -73,10 +71,9 @@ $column,$sortby,$relation,$datee,$class,$column_name)
         {
           $r=$this->relation;
           $c=$this->column;
-         // dd($r);
           $order->$c=$order->$r->name;
-       //   dd($order->$c);
-            //=$order->$r->name;
+ 
+    
         }
         return $orders;
 
