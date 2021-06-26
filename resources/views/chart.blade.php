@@ -23,12 +23,13 @@
     var chartdata = {
     type: 'bar',
     data: {
-    labels: <?php echo json_encode($users); ?>,
+    labels: <?php echo json_encode($sales); ?>,
     // labels: month,
     datasets: [
     {
-    label: 'this year',
-    backgroundColor: '#26B99A',
+    label: 'GroupBy' ,
+    backgroundColor: 'red',
+    
     borderWidth: 1,
     data: <?php echo json_encode($Data); ?>
     }

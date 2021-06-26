@@ -77,6 +77,7 @@ class OrderController extends Controller
         $order->donation = $request->donation;
         $order->slug = Str::slug($request->place, '-');
         $order->save();
+        $invoice->restaurant_id=1;
         $invoice->order_id=$order->id;
 
 
@@ -91,6 +92,7 @@ if ($is_offer->count()>0){
         $offer_log->offer_id=$is_offer[0]->id;
         $offer_log->order_id=$order->id;
         $offer_log->user_id=1;
+        $offer_log->restaurant_id=1;
         $offer_log->save();
 
 
@@ -115,6 +117,8 @@ if ($is_offer->count()>0){
                 $sale_log->sale_id=$is_sale[0]->id;
                 $sale_log->order_id=$order->id;
                 $sale_log->user_id=1;
+                $sale_log->restaurant_id=1;
+
                 $sale_log->save();
 
             }
