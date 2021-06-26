@@ -12,6 +12,9 @@ use Maatwebsite\Excel\Facades\Excel;
 class ReportRouteController extends Controller
 {
     //
+    public function blde(){
+        return view('Reportdatat');
+    }
 
     public function routef(Request $request)
     {

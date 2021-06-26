@@ -59,9 +59,8 @@ Route::post('/mealorder/{id}', [MealOrderController::class, 'storeorder'])->name
 Route::get('/restaurant',[RestaurantController::class,'search'])->name('restaurants.search');
 Route::get('/category',[CategoryController::class,'search'])->name('categories.search');
 Route::get('/meal',[MealController::class,'search'])->name('meals.search');
-Route::get("/salechart", [ChartController::class,'SaleChart'])->name('salechart');
-Route::get("/offerchart", [ChartController::class,'OfferChart'])->name('offerchart');
-Route::get("/chart", [ChartController::class,'blde'])->name('chart');
+
+Route::get("/chart", [ReportRouteController::class,'blde'])->name('chart');
 
 Route::post("/routef", [ReportRouteController::class,'routef'])->name('routef');
 
