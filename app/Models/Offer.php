@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Table extends Model
+class Offer extends Model
 {
     use HasFactory;
-    public function restaurant()
+    public function ratrestaurant()
     {
         return $this->belongsTo(Restaurant::class);
     }
-    public function reservations()
+    public function offerslog()
     {
-        return $this->belongsToMany(Reservation::class);
+        return $this->hasMany(Offerlog::class);
     }
-
-
+   
 }

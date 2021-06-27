@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Meal;
 use App\Models\Order;
 use App\Models\Category;
+use App\Models\invoice;
 use App\Models\MealOrder;
+use App\Models\Offer;
+use App\Models\Offerlog;
 use App\Models\Restaurant;
+use App\Models\Sale;
+use App\Models\Salelog;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class OrderController extends Controller
 {
@@ -61,6 +68,7 @@ class OrderController extends Controller
 
         // dd($request->{"quantity"$meal});
         $order = new Order();
+        $invoice=new invoice();
         $order->place = $request->place;
         $order->notes = $request->notes;
         $order->user_id = 1;
@@ -71,14 +79,11 @@ class OrderController extends Controller
         $order->slug = Str::slug($request->place, '-');
 
         $order->save();
+        $invoice->order_id=$order->id;
+
+
         $sum = 0;
-        foreach ($request->meals as $meal) {
-            $mealorder = new MealOrder();
-            $mealorder->meal_id = $meal;
-            $mealorder->quantity = $request->{"quantity" . $meal};
-            $mealorder->order_id = $order->id;
-            $mealorder->save();
-            $sum = ($request->{"price" . $meal} * $mealorder->quantity) + $sum;
+
         }
         $sum_all = $sum + $request->donation;
         $token = "fxUib1tmro4:APA91bFp2OBuNYGaLPWhC7GuVYJyjg_Ev2ZIRFJzojm3Jz3Nf1AiU6U3N_6XPKP_VQ4ACBHeJyF25d4_qV9qKuCCqOtGahetnRezB6WRQtGhTlqbKqkCbxuKHW-az26k3P_P_w91Ffld";
