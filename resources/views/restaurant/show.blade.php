@@ -279,7 +279,7 @@
 <!-- gallery section starts  -->
 
 <section class="gallery" id="gallery">
-    <h1 class="heading" style="color:orange"> our restaurant <span> gallery </span> </h1>
+    <h1 class="heading" style="color:orange"> our job <span> vacancy </span> </h1>
     <div class="box-container">
       @foreach ($restaurant->categories as $category)
         <div class="box">

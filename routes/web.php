@@ -11,10 +11,11 @@ use App\Http\Controllers\TableController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\MealOrderController;
+use App\Http\Controllers\JobVacancyController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\ReportRouteController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ExportReportController;
-use App\Http\Controllers\ReportRouteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,7 @@ Route::resource('orders', OrderController::class);
 Route::resource('tables', TableController::class);
 Route::resource('mealorder', MealOrderController::class);
 Route::resource('reservations', ReservationController::class);
+Route::resource('jobvacancies', JobVacancyController::class);
 
 //functions
 Route::get('/order/{id}', [OrderController::class, 'createorder'])->name('res-order.createorder');

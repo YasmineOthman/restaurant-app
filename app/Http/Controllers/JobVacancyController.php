@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobVacancy;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class JobVacancyController extends Controller
@@ -24,7 +25,7 @@ class JobVacancyController extends Controller
      */
     public function create()
     {
-        //
+        return view('jobvacancy.create');
     }
 
     /**
@@ -35,7 +36,20 @@ class JobVacancyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+
+            'title'                     => 'required|min:4|max:255',
+            'description'              => 'required|min:4',
+            'end_of_vacancy'            =>'required|date'
+
+        ]);
+        $jobVacancy = new JobVacancy();
+        $jobVacancy->title = $request->title;
+        $jobVacancy->description= $request->description;
+        $jobVacancy->slug = Str::slug($request->title, '-');
+        $jobVacancy->end_of_vacancy = $request->end_of_vacancy;
+        $end_of_vacancy->save();
+        return redirect()->route('jobvacancies.show', $jobVacancy);
     }
 
     /**
