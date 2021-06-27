@@ -9,6 +9,7 @@ use App\Models\Reservation;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ReservationTable;
+use Illuminate\Support\Facades\Auth;
 use Stevebauman\Location\Facades\Location;
 
 
@@ -19,6 +20,12 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+        if (Auth::check() && Auth::user()->role_id != 3) {
+        }
+    }
     public function index()
     {
         $restaurants = Restaurant::all();
