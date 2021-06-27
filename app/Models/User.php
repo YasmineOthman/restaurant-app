@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends \TCG\Voyager\Models\User
 {
     use HasFactory, Notifiable;
 
@@ -35,9 +35,9 @@ class User extends Authenticatable
         return $this->hasMany(Salelog::class);
     }
 
-    public function restaurants()
+    public function restaurant()
     {
-        return $this->belongsToMany(Restaurant::class);
+        return $this->hasOne(Restaurant::class);
     }
     /**
      * The attributes that should be hidden for arrays.
