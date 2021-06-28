@@ -33,7 +33,8 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        Mail::to($request->user())->send(new Welcome);
+       // Mail::to($request->user())->send(new Welcome);
+    if(Auth::User()->hasRole('admin')) {dd('ok');}
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

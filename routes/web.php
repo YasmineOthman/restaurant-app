@@ -118,3 +118,8 @@ require __DIR__ . '/auth.php';
 //     return view ('order.create',['meals'=>$meals,'restaurant'=>$restaurant]);
     // return view('pages.post', ['post' => $post]);
 // });
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

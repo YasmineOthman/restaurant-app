@@ -16,6 +16,8 @@ class CreateSalelogsTable extends Migration
         Schema::create('salelogs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('restaurant_id')->references('id')->on('restaurants')->constrained()->onDelete('cascade');          
+
             $table->foreignId('order_id')->references('id')->on('orders')->constrained()->onDelete('cascade');          
             $table->foreignId('user_id')->references('id')->on('users')->constrained()->onDelete('cascade');          
             $table->foreignId('sale_id')->references('id')->on('sales')->constrained()->onDelete('cascade');          
