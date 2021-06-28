@@ -72,6 +72,9 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create', Restaurant::class)) {
+            abort(403);
+        }
         $request->validate([
 
             'name'                     => 'required|min:4|max:255',
@@ -165,6 +168,9 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
+        if ($request->user()->cannot('update', $restaurant)) {
+            abort(403);
+        }
         $request->validate([
             'name'                     => 'required|min:4|max:255',
             'city'                     => 'required|min:4',

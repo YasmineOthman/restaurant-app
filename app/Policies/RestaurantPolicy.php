@@ -54,6 +54,7 @@ class RestaurantPolicy
     public function update(User $user, Restaurant $restaurant)
     {
         return $user->id === $restaurant->user_id;
+
     }
 
     /**
@@ -65,7 +66,7 @@ class RestaurantPolicy
      */
     public function delete(User $user, Restaurant $restaurant)
     {
-        //
+        return $user->id === $restaurant->user_id;
     }
 
     /**
@@ -77,7 +78,7 @@ class RestaurantPolicy
      */
     public function restore(User $user, Restaurant $restaurant)
     {
-        //
+        return $user->id === $restaurant->user_id;
     }
 
     /**
@@ -89,6 +90,6 @@ class RestaurantPolicy
      */
     public function forceDelete(User $user, Restaurant $restaurant)
     {
-        //
+        return $user->id === $restaurant->user_id;
     }
 }
