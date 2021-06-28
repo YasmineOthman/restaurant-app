@@ -19,7 +19,7 @@ class TranslationsTableSeeder extends Seeder
     public function run()
     {
         $this->dataTypesTranslations();
-        $this->categoriesTranslations();
+        // $this->categoriesTranslations();
         $this->pagesTranslations();
         $this->menusTranslations();
     }
@@ -29,21 +29,21 @@ class TranslationsTableSeeder extends Seeder
      *
      * @return void
      */
-    private function categoriesTranslations()
-    {
-        // Adding translations for 'categories'
-        //
-        $cat = Category::where('slug', 'category-1')->firstOrFail();
-        if ($cat->exists) {
-            $this->trans('pt', $this->arr(['categories', 'slug'], $cat->id), 'categoria-1');
-            $this->trans('pt', $this->arr(['categories', 'name'], $cat->id), 'Categoria 1');
-        }
-        $cat = Category::where('slug', 'category-2')->firstOrFail();
-        if ($cat->exists) {
-            $this->trans('pt', $this->arr(['categories', 'slug'], $cat->id), 'categoria-2');
-            $this->trans('pt', $this->arr(['categories', 'name'], $cat->id), 'Categoria 2');
-        }
-    }
+    // private function categoriesTranslations()
+    // {
+    //     // Adding translations for 'categories'
+    //     //
+    //     $cat = Category::where('slug', 'category-1')->firstOrFail();
+    //     if ($cat->exists) {
+    //         $this->trans('pt', $this->arr(['categories', 'slug'], $cat->id), 'categoria-1');
+    //         $this->trans('pt', $this->arr(['categories', 'name'], $cat->id), 'Categoria 1');
+    //     }
+    //     $cat = Category::where('slug', 'category-2')->firstOrFail();
+    //     if ($cat->exists) {
+    //         $this->trans('pt', $this->arr(['categories', 'slug'], $cat->id), 'categoria-2');
+    //         $this->trans('pt', $this->arr(['categories', 'name'], $cat->id), 'Categoria 2');
+    //     }
+    // }
 
     /**
      * Auto generate DataTypes Translations.
@@ -68,10 +68,10 @@ class TranslationsTableSeeder extends Seeder
         if ($dtp->exists) {
             $this->trans('pt', $this->arr($_tpl, $dtp->id), 'Utilizador');
         }
-        $dtp = DataType::where($_fld, __('voyager::seeders.data_types.category.singular'))->firstOrFail();
-        if ($dtp->exists) {
-            $this->trans('pt', $this->arr($_tpl, $dtp->id), 'Categoria');
-        }
+        // $dtp = DataType::where($_fld, __('voyager::seeders.data_types.category.singular'))->firstOrFail();
+        // if ($dtp->exists) {
+        //     $this->trans('pt', $this->arr($_tpl, $dtp->id), 'Categoria');
+        // }
         $dtp = DataType::where($_fld, __('voyager::seeders.data_types.menu.singular'))->firstOrFail();
         if ($dtp->exists) {
             $this->trans('pt', $this->arr($_tpl, $dtp->id), 'Menu');
@@ -97,10 +97,10 @@ class TranslationsTableSeeder extends Seeder
         if ($dtp->exists) {
             $this->trans('pt', $this->arr($_tpl, $dtp->id), 'Utilizadores');
         }
-        $dtp = DataType::where($_fld, __('voyager::seeders.data_types.category.plural'))->firstOrFail();
-        if ($dtp->exists) {
-            $this->trans('pt', $this->arr($_tpl, $dtp->id), 'Categorias');
-        }
+        // $dtp = DataType::where($_fld, __('voyager::seeders.data_types.category.plural'))->firstOrFail();
+        // if ($dtp->exists) {
+        //     $this->trans('pt', $this->arr($_tpl, $dtp->id), 'Categorias');
+        // }
         $dtp = DataType::where($_fld, __('voyager::seeders.data_types.menu.plural'))->firstOrFail();
         if ($dtp->exists) {
             $this->trans('pt', $this->arr($_tpl, $dtp->id), 'Menus');
@@ -167,10 +167,10 @@ class TranslationsTableSeeder extends Seeder
             $this->trans('pt', $this->arr($_tpl, $_item->id), 'Utilizadores');
         }
 
-        $_item = $this->findMenuItem(__('voyager::seeders.menu_items.categories'));
-        if ($_item->exists) {
-            $this->trans('pt', $this->arr($_tpl, $_item->id), 'Categorias');
-        }
+        // $_item = $this->findMenuItem(__('voyager::seeders.menu_items.categories'));
+        // if ($_item->exists) {
+        //     $this->trans('pt', $this->arr($_tpl, $_item->id), 'Categorias');
+        // }
 
         $_item = $this->findMenuItem(__('voyager::seeders.menu_items.pages'));
         if ($_item->exists) {
