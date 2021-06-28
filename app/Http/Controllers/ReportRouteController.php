@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Exports\UsersExport;
 use App\Imports\UsersImport;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ReportRouteController extends Controller
@@ -30,7 +31,9 @@ class ReportRouteController extends Controller
         $relation='offer';
         $datee="DATE_FORMAT(created_at,'%Y') as " . $sortby;
         $class='App\\Models\\' .$modelname;
-            $object = new OrdersUserExport(1,$request->dateFrom,$request->dateTo,$column,$sortby,$relation,$datee,$class,$column_name);
+      
+       $restaurant_id=Auth::user()->restaurant->id;
+            $object = new OrdersUserExport($restaurant_id,$request->dateFrom,$request->dateTo,$column,$sortby,$relation,$datee,$class,$column_name);
      $orders=$object->collection();
 
         foreach ($orders as $order) {
