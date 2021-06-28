@@ -8,7 +8,8 @@
       </div>
       @error('email')
           <p class="help is-danger" role="alert">
-              {{ $message }}
+            {{-- $message = {{$message }} --}}
+              {{__($message)}}
           </p>
       @enderror
     </div>
@@ -19,7 +20,7 @@
       </div>
       @error('password')
           <p class="help is-danger" role="alert">
-              {{ $message }}
+            {{__($message)}}
           </p>
       @enderror
     </div>

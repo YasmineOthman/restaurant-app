@@ -109,7 +109,9 @@
     <div class="content">
         <h3>{{$restaurant->name}} {{ __('validation.attributes.restaurant') }}</h3>
         <p>{!! $restaurant->description !!}</p>
+        @auth
         <a href="{{route('res-order.createorder',$restaurant->id)}}" class="btn btn-dark" style="color:black" role=button>Get Order</a>
+        @endauth
         <a href="{{route('res-table.createtable', $restaurant->id)}}" class="btn btn-dark" style="color:black" role=button>add table</a>
       </div>
     <div class="image">
@@ -163,8 +165,10 @@
             <span class="price"> {{$table->chairs_count}} {{ __('validation.attributes.chairs') }} </span>
             <img src="images/p-1.jpg" alt="">
             <h3>{{ $table->place_table }}</h3>
+            @auth
             <a href="{{route('res-reservation.createreservation',$restaurant->id,$table->id)}}" class="btn">{{ __('validation.attributes.reserve now') }}</a>
-        </div>
+            @endauth
+          </div>
         @endif
         @endforeach
         {{-- <div class="box">
@@ -279,7 +283,7 @@
 <!-- gallery section starts  -->
 
 <section class="gallery" id="gallery">
-    <h1 class="heading" style="color:orange"> our restaurant <span> gallery </span> </h1>
+    <h1 class="heading" style="color:orange"> our job <span> vacancy </span> </h1>
     <div class="box-container">
       @foreach ($restaurant->categories as $category)
         <div class="box">
