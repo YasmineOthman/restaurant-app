@@ -92,6 +92,7 @@ class RestaurantController extends Controller
         $restaurant->city = $request->city;
         $restaurant->address = $request->address;
         $restaurant->description= $request->description;
+        $restaurant->user_id = Auth::user()->id;
         $restaurant->slug = Str::slug($request->name, '-');
         $restaurant->tables_count = $request->tables_count;
         $restaurant->save();
